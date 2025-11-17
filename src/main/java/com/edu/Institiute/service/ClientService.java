@@ -15,4 +15,8 @@ public interface ClientService {
     CommonResponseDto updateClient(RequestRegistryDto dto, String clientId);
 
     PaginatedResponseClientDto clientById(String clientCode) throws SQLException;
+
+    CommonResponseDto removeClient(String clientId);
+
+    PaginatedResponseClientDto allClient() throws SQLException;
 }
