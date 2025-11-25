@@ -1,5 +1,6 @@
 package com.edu.Institiute.entity;
 
+import com.edu.Institiute.api.DepartmentController;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -39,20 +40,10 @@ public class Officer {
     private Date officerModifyDate;
 
     @ManyToOne
-    @JoinColumn(name ="statusid",referencedColumnName = "officerId")
+    @JoinColumn(name ="statusid",referencedColumnName = "id")
     private Status Status;
 
-    @OneToMany(mappedBy = "officerId", cascade = CascadeType.ALL)
-    private List<OfficerHasDepartment> officerHasDepartment;
-
-
-    // id
-    // officername
-    // officertype
-    // department
-    // createdby
-    // createdDate
-    // modify by
-    // modify date
-    // status
+    @ManyToOne
+    @JoinColumn(name ="departmentid",referencedColumnName = "id")
+    private Department Department;
 }
