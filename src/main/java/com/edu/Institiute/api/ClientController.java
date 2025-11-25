@@ -2,7 +2,6 @@ package com.edu.Institiute.api;
 
 
 import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
-import com.edu.Institiute.dto.requestDto.RequestTeacherDto;
 import com.edu.Institiute.dto.responseDto.CommonResponseDto;
 import com.edu.Institiute.service.ClientService;
 import com.edu.Institiute.utill.StandardResponse;
@@ -61,5 +60,29 @@ public class ClientController {
         );
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @DeleteMapping("{clientId}")
+    public ResponseEntity<StandardResponse> deleteClient(@PathVariable String clientId){
+        CommonResponseDto responseData = clientService.removeClient(clientId);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        responseData.getCode(),
+                        responseData.getMessage(),
+                        responseData.getData()
+                ),
+                HttpStatus.CREATED
+        );
+    }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping
+    public ResponseEntity<StandardResponse> getAllClients()throws SQLException{
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        200,
+                        "Client List",
+                        clientService.allClient()),
+                HttpStatus.OK
+        );
+    }
 }
