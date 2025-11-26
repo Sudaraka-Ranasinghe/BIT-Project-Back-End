@@ -37,13 +37,13 @@ public class Officer {
     private String officerModifyBy;
 
     @Column(name = "officerModifyDate")
-    private Date officerModifyDate;
+    private Date officerModifiedDate;
 
     @ManyToOne
     @JoinColumn(name ="statusid",referencedColumnName = "id")
     private Status Status;
 
     @ManyToOne
-    @JoinColumn(name ="departmentid",referencedColumnName = "id")
+    @JoinColumn(name ="departmentid",referencedColumnName = "departmentId")
     private Department Department;
 }
