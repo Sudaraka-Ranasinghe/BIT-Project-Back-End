@@ -1,6 +1,5 @@
 package com.edu.Institiute.dto.responseDto.paginated;
 
-import com.edu.Institiute.dto.responseDto.CourseResponseDto;
 import com.edu.Institiute.dto.responseDto.DepartmentResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class paginatedResponseDepartmentDto {
+public class PaginatedResponseDepartmentDto {
     private Long count;
     private List<DepartmentResponseDto> dataList;
 }

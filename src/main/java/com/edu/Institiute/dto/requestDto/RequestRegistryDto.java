@@ -32,5 +32,21 @@ public class RequestRegistryDto {
     private String clientModifyBy;
     private Date clientModifyDate;
 
-    //
+    // Officer
+    private String officerId;
+    private String officerFullName;
+    private String officerType;
+    private String officerCreatedBy;
+    private Date officerCreatedDate;
+    private String officerModifyBy;
+    private Date officerModifiedDate;
+
+    // Department
+    private String departmentId;
+    private String departmentName;
+    private String departmentCreatedBy;
+    private Date departmentCreatedDate;
+    private String departmentModifiedBy;
+    private Date departmentModifiedDate;
+
 }

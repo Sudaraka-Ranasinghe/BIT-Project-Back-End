@@ -5,6 +5,7 @@ import com.edu.Institiute.dto.DepartmentDto;
 import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
 import com.edu.Institiute.dto.responseDto.CommonResponseDto;
 import com.edu.Institiute.dto.responseDto.DepartmentResponseDto;
+import com.edu.Institiute.dto.responseDto.paginated.PaginatedResponseDepartmentDto;
 import com.edu.Institiute.entity.Department;
 import com.edu.Institiute.exception.EntryNotFoundException;
 import com.edu.Institiute.service.DepartmentService;
@@ -45,8 +46,8 @@ public class DepartmentRegistryImpl implements DepartmentService {
                     dto.getDepartmentName(),
                     dto.getDepartmentCreatedBy(),
                     dto.getDepartmentCreatedDate(),
-                    dto.getDepartmentCreatedBy(),
-                    dto.getDepartmentModifyDate(),
+                    dto.getDepartmentModifiedBy(),
+                    dto.getDepartmentModifiedDate(),
                     statusMapper.toStatusDto(status.get())
             );
             departmentRepo.save(departmentMapper.dtoToDepartmentEntity(departmentDto));
@@ -65,12 +66,12 @@ public class DepartmentRegistryImpl implements DepartmentService {
             allDepartmentForProvidedId.setDepartmentName(dto.getDepartmentName());
             allDepartmentForProvidedId.setDepartmentCreatedBy(dto.getDepartmentCreatedBy());
             allDepartmentForProvidedId.setDepartmentCreatedDate(dto.getDepartmentCreatedDate());
-            allDepartmentForProvidedId.setDepartmentModifyBy(dto.getDepartmentModifyBy());
+            allDepartmentForProvidedId.setDepartmentModifiedBy(dto.getDepartmentModifiedBy());
             allDepartmentForProvidedId.setDepartmentCreatedDate(dto.getDepartmentCreatedDate());
             allDepartments.setStatus(status.get());
             departmentRepo.save(allDepartmentForProvidedId);
 
-            return new CommonResponseDto(201, "Department  Updated!", allDepartmentForProvidedId.getDepartmentCode(), new ArrayList<>());
+            return new CommonResponseDto(201, "Department  Updated!", allDepartmentForProvidedId.getDepartmentId(), new ArrayList<>());
         }catch (Exception e){
             throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
         }
@@ -82,8 +83,8 @@ public class DepartmentRegistryImpl implements DepartmentService {
 //        List<OfficerHasDepartment> officerHasDepartments= officerHasDepartmentRepo.getOfficerAndDepartment(departmenId);
 //
 //        if (!officerHasDepartment.isEmpty()){
-//            for (StudentHasCourse r : studentHasCourses){
-//                studentHasCourseRepo.deleteById(r.getId());
+//            for (OfficerHasDepartment r : officerHasDepartments){
+//                officerHasDepartmentRepo.deleteById(r.getId());
 //            }
 //        }
 //
@@ -108,8 +109,8 @@ public class DepartmentRegistryImpl implements DepartmentService {
                                 r.getDepartmentName(),
                                 r.getDepartmentCreatedBy(),
                                 r.getDepartmentCreatedDate(),
-                                r.getDepartmentCreatedBy(),
-                                r.getDepartmentModifyDate(),
+                                r.getDepartmentModifiedBy(),
+                                r.getDepartmentModifiedDate(),
                                 statusMapper.toStatusDto(r.getStatus())
                         )
                 );

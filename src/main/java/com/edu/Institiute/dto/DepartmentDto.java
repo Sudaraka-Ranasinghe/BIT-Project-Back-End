@@ -16,7 +16,7 @@ public class DepartmentDto {
     private String departmentName;
     private String departmentCreatedBy;
     private Date departmentCreatedDate;
-    private String departmentModifyBy;
-    private Date departmentModifyDate;
+    private String departmentModifiedBy;
+    private Date departmentModifiedDate;
     private StatusDto status;
 }
