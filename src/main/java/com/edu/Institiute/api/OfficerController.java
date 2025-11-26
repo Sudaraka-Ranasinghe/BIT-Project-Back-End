@@ -1,9 +1,8 @@
 package com.edu.Institiute.api;
 
-
 import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
 import com.edu.Institiute.dto.responseDto.CommonResponseDto;
-import com.edu.Institiute.service.ClientService;
+import com.edu.Institiute.service.OfficerService;
 import com.edu.Institiute.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,16 +13,16 @@ import java.sql.SQLException;
 
 @CrossOrigin(origins = "http://localhost:4200/")
 @RestController
-@RequestMapping("/api/v1/client")
-public class ClientController {
+@RequestMapping("/api/v1/officer")
+public class OfficerController  {
 
     @Autowired
-    private ClientService clientService;
+    private OfficerService officerService;
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @PostMapping
-    public ResponseEntity<StandardResponse> savedClient(@RequestBody RequestRegistryDto data){
-        CommonResponseDto commonResponseDto = clientService.saveClient(data);
+    public ResponseEntity<StandardResponse> savedOfficer(@RequestBody RequestRegistryDto data){
+        CommonResponseDto commonResponseDto = officerService.saveOfficer(data);
         return new ResponseEntity<>(
                 new StandardResponse(
                         commonResponseDto.getCode(),
@@ -33,11 +32,10 @@ public class ClientController {
                 HttpStatus.CREATED
         );
     }
-
     @CrossOrigin(origins = "http://localhost:4200/")
-    @PutMapping("{clientId}")
-    public ResponseEntity<StandardResponse> updateClient(@RequestBody RequestRegistryDto data, @PathVariable String clientId){
-        CommonResponseDto responseData = clientService.updateClient(data,clientId);
+    @PutMapping("{officerId}")
+    public ResponseEntity<StandardResponse> updateOfficer(@RequestBody RequestRegistryDto data, @PathVariable String officerId){
+        CommonResponseDto responseData = officerService.updateOfficer(data,officerId);
         return new ResponseEntity<>(
                 new StandardResponse(
                         responseData.getCode(),
@@ -49,21 +47,21 @@ public class ClientController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200/")
-    @GetMapping("{clientId}")
-    public ResponseEntity<StandardResponse> getClient(@PathVariable String clientId)throws SQLException {
+    @GetMapping("{officerId}")
+    public ResponseEntity<StandardResponse> getOfficer(@PathVariable String officerId)throws SQLException {
         return new ResponseEntity<>(
                 new StandardResponse(
                         200,
-                        "Client List",
-                        clientService.clientById(clientId)),
+                        "Officer List",
+                        officerService.officerById(officerId)),
                 HttpStatus.OK
         );
     }
 
     @CrossOrigin(origins = "http://localhost:4200/")
-    @DeleteMapping("{clientId}")
-    public ResponseEntity<StandardResponse> deleteClient(@PathVariable String clientId){
-        CommonResponseDto responseData = clientService.removeClient(clientId);
+    @DeleteMapping("{officerId}")
+    public ResponseEntity<StandardResponse> deleteOfficer(@PathVariable String officerId){
+        CommonResponseDto responseData = officerService.removeOfficer(officerId);
         return new ResponseEntity<>(
                 new StandardResponse(
                         responseData.getCode(),
@@ -76,12 +74,12 @@ public class ClientController {
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping
-    public ResponseEntity<StandardResponse> getAllClients()throws SQLException{
+    public ResponseEntity<StandardResponse> getAllOfficers()throws SQLException{
         return new ResponseEntity<>(
                 new StandardResponse(
                         200,
-                        "Client List",
-                        clientService.allClient()),
+                        "Officer List",
+                        officerService.allOfficer()),
                 HttpStatus.OK
         );
     }

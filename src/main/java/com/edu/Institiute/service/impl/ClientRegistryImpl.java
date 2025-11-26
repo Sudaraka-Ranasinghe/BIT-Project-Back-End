@@ -1,23 +1,17 @@
 package com.edu.Institiute.service.impl;
 
 import com.edu.Institiute.dto.ClientDto;
-import com.edu.Institiute.dto.CourseDto;
-import com.edu.Institiute.dto.StatusDto;
 import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
 import com.edu.Institiute.dto.responseDto.ClientResponseDto;
 import com.edu.Institiute.dto.responseDto.CommonResponseDto;
-import com.edu.Institiute.dto.responseDto.StudentResponseDto;
 import com.edu.Institiute.dto.responseDto.paginated.PaginatedResponseClientDto;
-import com.edu.Institiute.dto.responseDto.paginated.PaginatedResponseStudentDto;
 import com.edu.Institiute.entity.*;
 import com.edu.Institiute.exception.EntryNotFoundException;
 import com.edu.Institiute.repo.ClientRepo;
-import com.edu.Institiute.repo.CourseRepo;
 import com.edu.Institiute.repo.StatusRepo;
 import com.edu.Institiute.service.ClientService;
 import com.edu.Institiute.utill.Generator;
 import com.edu.Institiute.utill.mapper.ClientMapper;
-import com.edu.Institiute.utill.mapper.CourseMapper;
 import com.edu.Institiute.utill.mapper.StatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -132,4 +125,49 @@ public class ClientRegistryImpl implements ClientService {
 
     }
 
+    @Override
+    public CommonResponseDto removeClient(String clientId) {
+
+        Optional<Client> client = clientRepo.getClientsById(clientId);
+
+        if (client.isPresent()) {
+            clientRepo.delete(client.get());
+            return new CommonResponseDto(201, "Client was deleted! ", true, new ArrayList<>());
+        } else {
+            throw new EntryNotFoundException("Can't find any Client---...!");
+        }
+    }
+
+    @Override
+    public PaginatedResponseClientDto allClient() {
+        try {
+            List<Client> allClientForProvidedId = clientRepo.findAll();
+            List<ClientResponseDto> clientResponseDos = new ArrayList<>();
+
+            for (Client r : allClientForProvidedId) {
+                clientResponseDos.add(
+                        new ClientResponseDto(
+                                r.getId(),
+                                r.getClientFullName(),
+                                r.getClientNic(),
+                                r.getClientAddress(),
+                                r.getClientEmail(),
+                                r.getClientContact(),
+                                r.getClientCreatedBy(),
+                                r.getClientCreatedDate(),
+                                r.getClientModifyBy(),
+                                r.getClientModifyDate(),
+                                statusMapper.toStatusDto(r.getStatus())
+                        )
+                );
+            }
+
+            return new PaginatedResponseClientDto(
+                    clientRepo.count(),
+                    clientResponseDos
+            );
+        }catch (Exception e){
+            throw new EntryNotFoundException("Can't find any data...!");
+        }
+    }
 }

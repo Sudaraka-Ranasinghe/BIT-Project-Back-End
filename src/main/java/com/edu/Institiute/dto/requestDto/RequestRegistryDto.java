@@ -31,4 +31,6 @@ public class RequestRegistryDto {
     private Date clientCreatedDate;
     private String clientModifyBy;
     private Date clientModifyDate;
+
+    //
 }
