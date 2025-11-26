@@ -13,6 +13,7 @@ public interface DepartmentService {
 
     CommonResponseDto updateDepartment(RequestRegistryDto dto, String departmentId);
 
+  CommonResponseDto removeDepartment(String departmentId);
  CommonResponseDto removeDepartment(String departmentId);
 
     PaginatedResponseDepartmentDto allDepartment() throws SQLException;
