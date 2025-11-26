@@ -52,7 +52,7 @@ public class OfficerRegistryImpl implements OfficerService {
                     dto.getOfficerCreatedBy(),
                     dto.getOfficerCreatedDate(),
                     dto.getOfficerModifyBy(),
-                    dto.getOfficerModifyDate(),
+                    dto.getOfficerModifiedDate(),
                     statusMapper.toStatusDto(status.get())
             );
             officerRepo.save(officerMapper.dtoToOfficerEntity(officerDto));
@@ -74,7 +74,7 @@ public class OfficerRegistryImpl implements OfficerService {
             allOfficers.setOfficerCreatedBy(dto.getOfficerCreatedBy());
             allOfficers.setOfficerCreatedDate(dto.getOfficerCreatedDate());
             allOfficers.setOfficerModifyBy(dto.getOfficerModifyBy());
-            allOfficers.setOfficerModifyDate(dto.getOfficerModifyDate());
+            allOfficers.setOfficerModifiedDate(dto.getOfficerModifiedDate());
             allOfficers.setStatus(status.get());
             officerRepo.save(allOfficers);
 
@@ -98,7 +98,7 @@ public class OfficerRegistryImpl implements OfficerService {
                                 r.getOfficerCreatedBy(),
                                 r.getOfficerCreatedDate(),
                                 r.getOfficerModifyBy(),
-                                r.getOfficerModifyDate(),
+                                r.getOfficerModifiedDate(),
                                 statusMapper.toStatusDto(r.getStatus())
                         )
                 );
@@ -142,7 +142,7 @@ public class OfficerRegistryImpl implements OfficerService {
                                 r.getOfficerCreatedBy(),
                                 r.getOfficerCreatedDate(),
                                 r.getOfficerModifyBy(),
-                                r.getOfficerModifyDate(),
+                                r.getOfficerModifiedDate(),
                                 statusMapper.toStatusDto(r.getStatus())
                         )
                 );
