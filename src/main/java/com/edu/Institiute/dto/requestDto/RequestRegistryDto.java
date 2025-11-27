@@ -3,6 +3,7 @@ package com.edu.Institiute.dto.requestDto;
 import com.edu.Institiute.dto.StatusDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
@@ -22,15 +23,19 @@ public class RequestRegistryDto {
     private String courseName;
 
     // Client
-    private String clientFullName;
-    private String clientNic;
-    private String clientAddress;
+    private String clientId;
+    private String clientType;
+    private String clientName;
+    private String contactPersonName;
+    private String clientPhoneNumbers;
     private String clientEmail;
-    private Number clientContact;
+    private String clientRegisteredAddress;
+    private String clientBillingAddress;
     private String clientCreatedBy;
     private Date clientCreatedDate;
-    private String clientModifyBy;
-    private Date clientModifyDate;
+    private String clientModifiedBy;
+    private Date clientModifiedDate;
+
 
     // Officer
     private String officerId;
@@ -48,5 +53,21 @@ public class RequestRegistryDto {
     private Date departmentCreatedDate;
     private String departmentModifiedBy;
     private Date departmentModifiedDate;
+
+    // Employee
+    private String employeeId;
+    private String employeeFirstName;
+    private String employeeLastName;
+    private String employeeNICNumber;
+    private String employeeOfficialEmail;
+    private Date employeeDateOfBirth;
+    private String employeeAddress;
+    private Number employeeContact;
+    private Date employmentDate;
+    private String employeeCreatedBy;
+    private Date employeeCreatedDate;
+    private String employeeModifiedBy;
+    private Date employeeModifiedDate;
+
 
 }
