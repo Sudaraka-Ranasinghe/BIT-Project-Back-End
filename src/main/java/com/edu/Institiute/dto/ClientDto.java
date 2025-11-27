@@ -9,16 +9,18 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientDto {
-    private String id;
-    private String clientFullName;
-    private String clientNic;
-    private String clientAddress;
+    private String clientId;
+    private String clientType;
+    private String clientName;
+    private String contactPersonName;
+    private Number clientPhoneNumbers;
     private String clientEmail;
-    private Number clientContact;
+    private String clientRegisteredAddress;
+    private String clientBillingAddress;
     private String clientCreatedBy;
     private Date clientCreatedDate;
-    private String clientModifyBy;
-    private Date clientModifyDate;
-    private StatusDto status;
+    private String clientModifiedBy;
+    private Date clientModifiedDate;
+    private StatusDto Status;
 
 }

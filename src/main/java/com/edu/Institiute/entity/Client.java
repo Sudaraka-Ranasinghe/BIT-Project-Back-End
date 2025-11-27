@@ -16,23 +16,29 @@ import java.util.Date;
 public class Client {
 
     @Id
-    @Column(name = "id")
-    private String id;
+    @Column(name = "clientId")
+    private String clientId;
 
-    @Column(name = "fullname")
-    private String clientFullName;
+    @Column(name = "clientType")
+    private String clientType;
 
-    @Column(name = "clientNic")
-    private String clientNic;
+    @Column(name = "clientName")
+    private String clientName;
 
-    @Column(name = "clientAddress")
-    private String clientAddress;
+    @Column(name = "contactPersonName")
+    private String contactPersonName;
+
+    @Column(name = "clientPhoneNumbers")
+    private Number clientPhoneNumbers;
 
     @Column(name = "clientEmail")
     private String clientEmail;
 
-    @Column(name = "clientContact")
-    private Number clientContact;
+    @Column(name = "clientRegisteredAddress")
+    private String clientRegisteredAddress;
+
+    @Column(name = "clientBillingAddress")
+    private String clientBillingAddress;
 
     @Column(name = "clientCreatedBy")
     private String clientCreatedBy;
@@ -40,11 +46,11 @@ public class Client {
     @Column(name = "clientCreatedDate")
     private Date clientCreatedDate;
 
-    @Column(name = "clientModifyBy")
-    private String clientModifyBy;
+    @Column(name = "clientModifiedBy")
+    private String clientModifiedBy;
 
-    @Column(name = "clientModifyDate")
-    private Date clientModifyDate;
+    @Column(name = "clientModifiedDate")
+    private Date clientModifiedDate;
 
     @ManyToOne
     @JoinColumn(name ="statusid",referencedColumnName = "id")
