@@ -1,8 +1,6 @@
 package com.edu.Institiute.repo;
 
 import com.edu.Institiute.entity.Client;
-import com.edu.Institiute.entity.Course;
-import com.edu.Institiute.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
