@@ -45,23 +45,26 @@ public class ClientRegistryImpl implements ClientService {
     public CommonResponseDto saveClient(RequestRegistryDto dto) {
         Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
         try {
+
             String clientId =  generator.generateFourNumbers();
             ClientDto clientDto = new ClientDto(
                     clientId,
-                    dto.getClientFullName(),
-                    dto.getClientNic(),
-                    dto.getClientAddress(),
+                    dto.getClientType(),
+                    dto.getClientName(),
+                    dto.getContactPersonName(),
+                    dto.getClientPhoneNumbers(),
                     dto.getClientEmail(),
-                    dto.getClientContact(),
+                    dto.getClientRegisteredAddress(),
+                    dto.getClientBillingAddress(),
                     dto.getClientCreatedBy(),
                     dto.getClientCreatedDate(),
-                    dto.getClientModifyBy(),
-                    dto.getClientModifyDate(),
+                    dto.getClientModifiedBy(),
+                    dto.getClientModifiedDate(),
                     statusMapper.toStatusDto(status.get())
             );
             clientRepo.save(clientMapper.dtoToClientEntity(clientDto));
 
-            return new CommonResponseDto(201, "Client  saved!", clientDto.getClientFullName(), new ArrayList<>());
+            return new CommonResponseDto(201, "Client  saved!", clientDto.getClientName(), new ArrayList<>());
         }catch (Exception e){
             throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
         }
@@ -73,19 +76,21 @@ public class ClientRegistryImpl implements ClientService {
             Client allClients = clientRepo.findByClientId(clientId);
             Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
 
-            allClients.setClientFullName(dto.getClientFullName());
-            allClients.setClientNic(dto.getClientNic());
-            allClients.setClientAddress(dto.getClientAddress());
+            allClients.setClientType(dto.getClientType());
+            allClients.setClientName(dto.getClientName());
+            allClients.setContactPersonName(dto.getContactPersonName());
+            allClients.setClientPhoneNumbers(dto.getClientPhoneNumbers());
             allClients.setClientEmail(dto.getClientEmail());
-            allClients.setClientContact(dto.getClientContact());
+            allClients.setClientRegisteredAddress(dto.getClientRegisteredAddress());
+            allClients.setClientBillingAddress(dto.getClientBillingAddress());
             allClients.setClientCreatedBy(dto.getClientCreatedBy());
             allClients.setClientCreatedDate(dto.getClientCreatedDate());
-            allClients.setClientModifyBy(dto.getClientModifyBy());
-            allClients.setClientModifyDate(dto.getClientModifyDate());
+            allClients.setClientModifiedBy(dto.getClientModifiedBy());
+            allClients.setClientModifiedDate(dto.getClientModifiedDate());
             allClients.setStatus(status.get());
             clientRepo.save(allClients);
 
-            return new CommonResponseDto(201, "Client  Updated!", allClients.getClientFullName(), new ArrayList<>());
+            return new CommonResponseDto(201, "Client  Updated!", allClients.getClientName(), new ArrayList<>());
         }catch (Exception e){
             throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
         }
@@ -100,16 +105,18 @@ public class ClientRegistryImpl implements ClientService {
             for (Client r : allClientForProvidedId) {
                 clientResponseDos.add(
                         new ClientResponseDto(
-                                r.getId(),
-                                r.getClientFullName(),
-                                r.getClientNic(),
-                                r.getClientAddress(),
+                                r.getClientId(),
+                                r.getClientType(),
+                                r.getClientName(),
+                                r.getContactPersonName(),
+                                r.getClientPhoneNumbers(),
                                 r.getClientEmail(),
-                                r.getClientContact(),
+                                r.getClientRegisteredAddress(),
+                                r.getClientBillingAddress(),
                                 r.getClientCreatedBy(),
                                 r.getClientCreatedDate(),
-                                r.getClientModifyBy(),
-                                r.getClientModifyDate(),
+                                r.getClientModifiedBy(),
+                                r.getClientModifiedDate(),
                                 statusMapper.toStatusDto(r.getStatus())
                         )
                 );
@@ -147,16 +154,18 @@ public class ClientRegistryImpl implements ClientService {
             for (Client r : allClientForProvidedId) {
                 clientResponseDos.add(
                         new ClientResponseDto(
-                                r.getId(),
-                                r.getClientFullName(),
-                                r.getClientNic(),
-                                r.getClientAddress(),
+                                r.getClientId(),
+                                r.getClientType(),
+                                r.getClientName(),
+                                r.getContactPersonName(),
+                                r.getClientPhoneNumbers(),
                                 r.getClientEmail(),
-                                r.getClientContact(),
+                                r.getClientRegisteredAddress(),
+                                r.getClientBillingAddress(),
                                 r.getClientCreatedBy(),
                                 r.getClientCreatedDate(),
-                                r.getClientModifyBy(),
-                                r.getClientModifyDate(),
+                                r.getClientModifiedBy(),
+                                r.getClientModifiedDate(),
                                 statusMapper.toStatusDto(r.getStatus())
                         )
                 );
