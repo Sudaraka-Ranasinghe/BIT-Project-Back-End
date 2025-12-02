@@ -29,7 +29,7 @@ public class RequestRegistryDto {
     private String clientType;
     private String clientName;
     private String contactPersonName;
-    private String clientPhoneNumbers;
+    private Number clientPhoneNumbers;
     private String clientEmail;
     private String clientRegisteredAddress;
     private String clientBillingAddress;
