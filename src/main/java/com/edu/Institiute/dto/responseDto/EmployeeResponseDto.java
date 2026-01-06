@@ -10,7 +10,6 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class EmployeeResponseDto {
     private String employeeId;
     private String employeeFirstName;
@@ -19,7 +18,7 @@ public class EmployeeResponseDto {
     private String employeeOfficialEmail;
     private Date employeeDateOfBirth;
     private String employeeAddress;
-    private Number employeeContact;
+    private String employeeContact;
     private Date employmentDate;
     private String employeeCreatedBy;
     private Date employeeCreatedDate;

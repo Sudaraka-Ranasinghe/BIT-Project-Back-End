@@ -1,6 +1,6 @@
 package com.edu.Institiute.repo;
 
-import com.edu.Institiute.entity.Client;
+//import com.edu.Institiute.entity.Client;
 import com.edu.Institiute.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +20,7 @@ public interface EmployeeRepo extends JpaRepository<Employee,String> {
 
     @Query(value = "SELECT * FROM employee WHERE id=:employeeId", nativeQuery = true)
     Optional<Employee> getEmployeesById(@Param("employeeId")String employeeId);
+
+    @Query(value = "SELECT * FROM employee WHERE id=:employeNICNumber", nativeQuery = true)
+    Optional<Employee> getEmployeesByNIC(@Param("employeNICNumber")String employeeNIC);
 }

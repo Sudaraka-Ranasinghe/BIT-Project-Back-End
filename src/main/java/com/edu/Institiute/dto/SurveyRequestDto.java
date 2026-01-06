@@ -1,6 +1,6 @@
 package com.edu.Institiute.dto;
 
-import com.edu.Institiute.entity.Client;
+//import com.edu.Institiute.entity.Client;
 import com.edu.Institiute.entity.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +25,5 @@ public class SurveyRequestDto {
     private String requestModifiedBy;
     private Date requestModifiedDate;
     private StatusDto Status;
-    private Client Client;
+//    private Client Client;
 }

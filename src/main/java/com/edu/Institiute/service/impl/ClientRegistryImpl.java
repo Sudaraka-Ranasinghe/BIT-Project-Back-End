@@ -69,7 +69,7 @@ public class ClientRegistryImpl implements ClientService {
             throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
         }
     }
-    
+
     @Override
     public CommonResponseDto updateClient(RequestRegistryDto dto, String clientId) {
         try {
