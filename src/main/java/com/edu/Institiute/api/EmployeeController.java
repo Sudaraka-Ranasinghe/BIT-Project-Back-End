@@ -1,6 +1,5 @@
 package com.edu.Institiute.api;
 
-
 import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
 import com.edu.Institiute.dto.responseDto.CommonResponseDto;
 import com.edu.Institiute.service.EmployeeService;
@@ -32,9 +31,11 @@ public class EmployeeController {
                 HttpStatus.CREATED
         );
     }
+
     @CrossOrigin(origins = "http://localhost:4200/")
     @PutMapping("{employeeId}")
-    public ResponseEntity<StandardResponse> updateEmployee(@RequestBody RequestRegistryDto data, @PathVariable String employeeId){
+    public ResponseEntity<StandardResponse> updateEmployee(@RequestBody RequestRegistryDto data, @PathVariable
+    String employeeId){
         CommonResponseDto responseData = employeeService.updateEmployee(data,employeeId);
         return new ResponseEntity<>(
                 new StandardResponse(
@@ -45,7 +46,6 @@ public class EmployeeController {
                 HttpStatus.CREATED
         );
     }
-
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("{employeeId}")
     public ResponseEntity<StandardResponse> getEmployee(@PathVariable String employeeId)throws SQLException {
@@ -57,7 +57,6 @@ public class EmployeeController {
                 HttpStatus.OK
         );
     }
-
     @CrossOrigin(origins = "http://localhost:4200/")
     @DeleteMapping("{employeeId}")
     public ResponseEntity<StandardResponse> deleteEmployee(@PathVariable String employeeId){
@@ -71,10 +70,9 @@ public class EmployeeController {
                 HttpStatus.CREATED
         );
     }
-
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping
-    public ResponseEntity<StandardResponse> getAllEmployees()throws SQLException{
+    public ResponseEntity<StandardResponse> getAllEmployees()throws SQLException {
         return new ResponseEntity<>(
                 new StandardResponse(
                         200,
@@ -83,4 +81,7 @@ public class EmployeeController {
                 HttpStatus.OK
         );
     }
+
+
+
 }

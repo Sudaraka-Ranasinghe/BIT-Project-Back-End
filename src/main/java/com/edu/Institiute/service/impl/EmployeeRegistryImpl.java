@@ -12,6 +12,7 @@ import com.edu.Institiute.repo.*;
 import com.edu.Institiute.service.EmployeeService;
 import com.edu.Institiute.utill.Generator;
 import com.edu.Institiute.utill.mapper.CourseMapper;
+import com.edu.Institiute.utill.mapper.EmployeeMapper;
 import com.edu.Institiute.utill.mapper.StatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,34 +45,45 @@ public class EmployeeRegistryImpl implements EmployeeService {
 
     @Autowired
     private StatusMapper statusMapper;
-+
+
     @Override
     public CommonResponseDto saveEmployee(RequestRegistryDto dto) {
-        Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
-        try {
-            String employeeId =  generator.generateFourNumbers();
-            EmployeeDto employeetDto = new EmployeeDto(
-                    employeeId,
-                    dto.getEmployeeFirstName(),
-                    dto.getEmployeeLastName(),
-                    dto.getEmployeeNICNumber(),
-                    dto.getEmployeeOfficialEmail(),
-                    dto.getEmployeeDateOfBirth(),
-                    dto.getEmployeeAddress(),
-                    dto.getEmployeeContact(),
-                    dto.getEmploymentDate(),
-                    dto.getEmployeeCreatedBy(),
-                    dto.getEmployeeCreatedDate(),
-                    dto.getEmployeeModifiedBy(),
-                    dto.getEmployeeModifiedDate(),
-                    statusMapper.toStatusDto(status.get())
-            );
-            EmployeeRepo.save(employeeMapper.dtoToEmployeeEntity(employeeDto));
+        // To Check if NIC already exists
+        Optional<Employee> nicExx = employeeRepo.getEmployeesByNIC(dto.getEmployeeNICNumber());
+        if(nicExx!= null && !nicExx.isEmpty()) {
+            try {
+                String employeeId = generator.generateFourNumbers();
+                Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
 
-            return new CommonResponseDto(201, "Employee  saved!", employeetDto.getEmployeeFirstName(), new ArrayList<>());
-        }catch (Exception e){
-            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+                EmployeeDto employeeDto = new EmployeeDto(
+                        employeeId,
+                        dto.getEmployeeFirstName(),
+                        dto.getEmployeeLastName(),
+                        dto.getEmployeeNICNumber(),
+                        dto.getEmployeeOfficialEmail(),
+                        dto.getEmployeeDateOfBirth(),
+                        dto.getEmployeeAddress(),
+                        dto.getEmployeeContact(),
+                        dto.getEmploymentDate(),
+                        dto.getEmployeeCreatedBy(),
+                        new Date(),
+                        "",
+                        dto.getEmployeeModifiedDate(),
+                        statusMapper.toStatusDto(status.get())
+                );
+                employeeRepo.save(employeeMapper.dtoToEmployeeEntity(employeeDto));
+
+                return new CommonResponseDto(201, "Employee  saved!", employeeDto.getEmployeeFirstName(), new ArrayList<>());
+            }catch(Exception e){
+                throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
         }
+
+        }
+        else {
+            throw new EntryNotFoundException("Can't Save because of this Employee already exists " );
+
+        }
+
     }
 
     @Override
@@ -78,7 +91,6 @@ public class EmployeeRegistryImpl implements EmployeeService {
         try {
             Employee allEmployees = employeeRepo.findByEmployeeId(employeeId);
             Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
-
             allEmployees.setEmployeeFirstName(dto.getEmployeeFirstName());
             allEmployees.setEmployeeLastName(dto.getEmployeeLastName());
             allEmployees.setEmployeeNICNumber( dto.getEmployeeNICNumber());
@@ -93,9 +105,10 @@ public class EmployeeRegistryImpl implements EmployeeService {
             allEmployees.setEmployeeModifiedDate(dto.getEmployeeModifiedDate());
             allEmployees.setStatus(status.get());
             employeeRepo.save(allEmployees);
-            return new CommonResponseDto(201, "Employee  Updated!", allEmployees.getEmployeeFirstName(), new ArrayList<>());
+            return new CommonResponseDto(201, "Employee Updated!", allEmployees.getEmployeeFirstName(), new
+                    ArrayList<>());
         }catch (Exception e){
-            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+            throw new EntryNotFoundException("Can't Save because of this Error --> " + e);
         }
     }
 
@@ -104,7 +117,6 @@ public class EmployeeRegistryImpl implements EmployeeService {
         try {
             List<Employee> allEmployeeForProvidedId = employeeRepo.getAllEmployeeForProvidedId(employeeCode);
             List<EmployeeResponseDto> employeeResponseDos = new ArrayList<>();
-
             for (Employee r : allEmployeeForProvidedId) {
                 employeeResponseDos.add(
                         new EmployeeResponseDto(
@@ -132,14 +144,10 @@ public class EmployeeRegistryImpl implements EmployeeService {
         }catch (Exception e){
             throw new EntryNotFoundException("Can't find any data for provided ID...!");
         }
-
     }
-
     @Override
     public CommonResponseDto removeEmployee(String employeeId) {
-
         Optional<Employee> employee = employeeRepo.getEmployeesById(employeeId);
-
         if (employee.isPresent()) {
             employeeRepo.delete(employee.get());
             return new CommonResponseDto(201, "Employee was deleted! ", true, new ArrayList<>());
@@ -147,13 +155,11 @@ public class EmployeeRegistryImpl implements EmployeeService {
             throw new EntryNotFoundException("Can't find any Employee---...!");
         }
     }
-
     @Override
     public PaginatedResponseEmployeeDto allEmployee() {
         try {
             List<Employee> allEmployeeForProvidedId = employeeRepo.findAll();
             List<EmployeeResponseDto> employeeResponseDos = new ArrayList<>();
-
             for (Employee r : allEmployeeForProvidedId) {
                 employeeResponseDos.add(
                         new EmployeeResponseDto(
@@ -182,6 +188,7 @@ public class EmployeeRegistryImpl implements EmployeeService {
             throw new EntryNotFoundException("Can't find any data...!");
         }
     }
+
 
 
 }

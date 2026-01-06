@@ -15,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "employee")
 public class Employee {
+
     @Id
     @Column(name = "employeeId")
     private String employeeId;
@@ -38,13 +39,10 @@ public class Employee {
     private String employeeAddress;
 
     @Column(name = "employeeContact")
-    private Number employeeContact;
+    private String employeeContact;
 
     @Column(name = "employmentDate")
     private Date employmentDate;
-
-    @Column(name = "employeeStatus")
-    private String employeeStatus;
 
     @Column(name = "employeeCreatedBy")
     private String employeeCreatedBy;
