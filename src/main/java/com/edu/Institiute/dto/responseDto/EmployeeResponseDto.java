@@ -1,6 +1,7 @@
 package com.edu.Institiute.dto.responseDto;
 
 import com.edu.Institiute.dto.StatusDto;
+import com.edu.Institiute.entity.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,5 @@ public class EmployeeResponseDto {
     private Date employeeCreatedDate;
     private String employeeModifiedBy;
     private Date employeeModifiedDate;
-    private StatusDto Status;
+//    private StatusDto Status;
 }

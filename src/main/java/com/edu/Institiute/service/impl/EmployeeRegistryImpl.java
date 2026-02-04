@@ -68,8 +68,7 @@ public class EmployeeRegistryImpl implements EmployeeService {
                         dto.getEmployeeCreatedBy(),
                         new Date(),
                         "",
-                        dto.getEmployeeModifiedDate(),
-                        statusMapper.toStatusDto(status.get())
+                        dto.getEmployeeModifiedDate()
                 );
                 employeeRepo.save(employeeMapper.dtoToEmployeeEntity(employeeDto));
 
@@ -103,7 +102,6 @@ public class EmployeeRegistryImpl implements EmployeeService {
             allEmployees.setEmployeeCreatedDate(dto.getEmployeeCreatedDate());
             allEmployees.setEmployeeModifiedBy(dto.getEmployeeModifiedBy());
             allEmployees.setEmployeeModifiedDate(dto.getEmployeeModifiedDate());
-            allEmployees.setStatus(status.get());
             employeeRepo.save(allEmployees);
             return new CommonResponseDto(201, "Employee Updated!", allEmployees.getEmployeeFirstName(), new
                     ArrayList<>());
@@ -132,8 +130,8 @@ public class EmployeeRegistryImpl implements EmployeeService {
                                 r.getEmployeeCreatedBy(),
                                 r.getEmployeeCreatedDate(),
                                 r.getEmployeeModifiedBy(),
-                                r.getEmployeeModifiedDate(),
-                                statusMapper.toStatusDto(r.getStatus())
+                                r.getEmployeeModifiedDate()
+
                         )
                 );
             }
@@ -175,8 +173,7 @@ public class EmployeeRegistryImpl implements EmployeeService {
                                 r.getEmployeeCreatedBy(),
                                 r.getEmployeeCreatedDate(),
                                 r.getEmployeeModifiedBy(),
-                                r.getEmployeeModifiedDate(),
-                                statusMapper.toStatusDto(r.getStatus())
+                                r.getEmployeeModifiedDate()
                         )
                 );
             }

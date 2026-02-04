@@ -56,7 +56,7 @@ public class Employee {
     @Column(name = "employeeModifiedDate")
     private Date employeeModifiedDate;
 
-    @ManyToOne
-    @JoinColumn(name ="statusId",referencedColumnName = "id")
-    private Status Status;
+//    @ManyToOne
+//    @JoinColumn(name ="statusId",referencedColumnName = "id")
+//    private Status Status;
 }
