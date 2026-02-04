@@ -26,6 +26,6 @@ public class EmployeeDto {
     private Date employeeCreatedDate;
     private String employeeModifiedBy;
     private Date employeeModifiedDate;
-//    private StatusDto Status;
+    private StatusDto Status;
 
 }

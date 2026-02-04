@@ -38,9 +38,6 @@ public class EmployeeRegistryImpl implements EmployeeService {
     private EmployeeMapper employeeMapper;
 
     @Autowired
-    private CourseMapper courseMapper;
-
-    @Autowired
     private EmployeeRepo employeeRepo;
 
     @Autowired
@@ -50,7 +47,8 @@ public class EmployeeRegistryImpl implements EmployeeService {
     public CommonResponseDto saveEmployee(RequestRegistryDto dto) {
         // To Check if NIC already exists
         Optional<Employee> nicExx = employeeRepo.getEmployeesByNIC(dto.getEmployeeNICNumber());
-        if(nicExx!= null && !nicExx.isEmpty()) {
+        System.out.println("nicExx : " +nicExx);
+        if(nicExx.isEmpty()) {
             try {
                 String employeeId = generator.generateFourNumbers();
                 Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
@@ -68,7 +66,8 @@ public class EmployeeRegistryImpl implements EmployeeService {
                         dto.getEmployeeCreatedBy(),
                         new Date(),
                         "",
-                        dto.getEmployeeModifiedDate()
+                        dto.getEmployeeModifiedDate(),
+                        statusMapper.toStatusDto(status.get())
                 );
                 employeeRepo.save(employeeMapper.dtoToEmployeeEntity(employeeDto));
 
@@ -130,8 +129,8 @@ public class EmployeeRegistryImpl implements EmployeeService {
                                 r.getEmployeeCreatedBy(),
                                 r.getEmployeeCreatedDate(),
                                 r.getEmployeeModifiedBy(),
-                                r.getEmployeeModifiedDate()
-
+                                r.getEmployeeModifiedDate(),
+                                statusMapper.toStatusDto(r.getStatus())
                         )
                 );
             }
@@ -173,7 +172,8 @@ public class EmployeeRegistryImpl implements EmployeeService {
                                 r.getEmployeeCreatedBy(),
                                 r.getEmployeeCreatedDate(),
                                 r.getEmployeeModifiedBy(),
-                                r.getEmployeeModifiedDate()
+                                r.getEmployeeModifiedDate(),
+                                statusMapper.toStatusDto(r.getStatus())
                         )
                 );
             }
