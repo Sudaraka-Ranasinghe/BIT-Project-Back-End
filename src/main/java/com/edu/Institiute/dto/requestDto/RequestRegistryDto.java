@@ -1,6 +1,5 @@
 package com.edu.Institiute.dto.requestDto;
 
-import com.edu.Institiute.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
