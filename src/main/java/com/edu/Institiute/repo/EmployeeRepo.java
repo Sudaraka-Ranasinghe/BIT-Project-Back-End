@@ -12,15 +12,15 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee,String> {
-    @Query(value = "SELECT * FROM employee WHERE id=:employeeId", nativeQuery = true)
+    @Query(value = "SELECT * FROM employee WHERE employee_id=:employeeId", nativeQuery = true)
     Employee findByEmployeeId(@Param("employeeId") String employeeId);
 
-    @Query(value = "SELECT * FROM employee WHERE id=:employeeCode", nativeQuery = true)
+    @Query(value = "SELECT * FROM employee WHERE employee_id=:employeeCode", nativeQuery = true)
     List<Employee> getAllEmployeeForProvidedId(@Param("employeeCode") String employeeCode);
 
-    @Query(value = "SELECT * FROM employee WHERE id=:employeeId", nativeQuery = true)
+    @Query(value = "SELECT * FROM employee WHERE employee_id=:employeeId", nativeQuery = true)
     Optional<Employee> getEmployeesById(@Param("employeeId")String employeeId);
 
-    @Query(value = "SELECT * FROM employee WHERE id=:employeNICNumber", nativeQuery = true)
-    Optional<Employee> getEmployeesByNIC(@Param("employeNICNumber")String employeeNIC);
+    @Query(value = "SELECT * FROM employee WHERE employeenicnumber=:employeNICNumber", nativeQuery = true)
+    Optional<Employee> getEmployeesByNIC(@Param("employeNICNumber")String employeNICNumber);
 }
