@@ -11,13 +11,13 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRepo extends JpaRepository<Client,String> {
-    @Query(value = "SELECT * FROM client WHERE id=:clientId", nativeQuery = true)
+    @Query(value = "SELECT * FROM client WHERE client_id=:clientId", nativeQuery = true)
     Client findByClientId(@Param("clientId") String clientId);
 
-    @Query(value = "SELECT * FROM client WHERE id=:clientCode", nativeQuery = true)
+    @Query(value = "SELECT * FROM client WHERE client_id=:clientCode", nativeQuery = true)
     List<Client> getAllClientForProvidedId(@Param("clientCode") String clientCode);
 
-    @Query(value = "SELECT * FROM client WHERE id=:clientId", nativeQuery = true)
+    @Query(value = "SELECT * FROM client WHERE client_id=:clientId", nativeQuery = true)
     Optional<Client> getClientsById(@Param("clientId")String clientId);
 
 }
