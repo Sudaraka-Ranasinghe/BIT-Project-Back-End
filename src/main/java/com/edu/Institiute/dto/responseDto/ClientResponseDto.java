@@ -14,7 +14,7 @@ public class ClientResponseDto {
     private String clientType;
     private String clientName;
     private String contactPersonName;
-    private Number clientPhoneNumbers;
+    private String clientPhoneNumbers;
     private String clientEmail;
     private String clientRegisteredAddress;
     private String clientBillingAddress;

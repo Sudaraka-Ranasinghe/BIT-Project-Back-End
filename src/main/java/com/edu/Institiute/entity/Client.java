@@ -29,7 +29,7 @@ public class Client {
     private String contactPersonName;
 
     @Column(name = "clientPhoneNumbers")
-    private Number clientPhoneNumbers;
+    private String clientPhoneNumbers;
 
     @Column(name = "clientEmail")
     private String clientEmail;
@@ -53,7 +53,7 @@ public class Client {
     private Date clientModifiedDate;
 
     @ManyToOne
-    @JoinColumn(name ="statusid",referencedColumnName = "id")
+    @JoinColumn(name ="statusId",referencedColumnName = "id")
     private Status Status;
 
 }

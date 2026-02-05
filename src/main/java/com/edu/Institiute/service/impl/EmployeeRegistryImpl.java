@@ -11,7 +11,6 @@ import com.edu.Institiute.exception.EntryNotFoundException;
 import com.edu.Institiute.repo.*;
 import com.edu.Institiute.service.EmployeeService;
 import com.edu.Institiute.utill.Generator;
-import com.edu.Institiute.utill.mapper.CourseMapper;
 import com.edu.Institiute.utill.mapper.EmployeeMapper;
 import com.edu.Institiute.utill.mapper.StatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
