@@ -1,6 +1,7 @@
 package com.edu.Institiute.dto;
 
 import com.edu.Institiute.entity.Employee;
+import com.edu.Institiute.entity.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,7 @@ public class SurveyorDto {
     private Date surveyorLicenseExpiryDate;
     private String surveyorSpecialization;
     private String surveyorRank;
-    private Employee Employee;
+    private EmployeeDto Employee;
+    private StatusDto Status;
+
 }
