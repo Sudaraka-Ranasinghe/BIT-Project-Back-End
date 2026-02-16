@@ -22,4 +22,7 @@ public interface EmployeeRepo extends JpaRepository<Employee,String> {
 
     @Query(value = "SELECT * FROM employee WHERE employeenicnumber=:employeNICNumber", nativeQuery = true)
     Optional<Employee> getEmployeesByNIC(@Param("employeNICNumber")String employeNICNumber);
+
+    @Query(value = "SELECT * FROM employee WHERE employee_id=:employeeId", nativeQuery = true)
+    Optional<Employee> findByExxEmployeeId(@Param("employeeId") String employeeId);
 }
