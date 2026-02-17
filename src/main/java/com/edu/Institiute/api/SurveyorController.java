@@ -45,31 +45,31 @@ public class SurveyorController {
         );
     }
 
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping("{surveyorId}")
-//    public ResponseEntity<StandardResponse> getSurveyor(@PathVariable String surveyorId)throws SQLException {
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        200,
-//                        "Surveyor List",
-//                        surveyorService.surveyorById(surveyorId)),
-//                HttpStatus.OK
-//        );
-//    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @DeleteMapping("{surveyorId}")
-//    public ResponseEntity<StandardResponse> deleteSurveyor(@PathVariable String surveyorId){
-//        CommonResponseDto responseData = surveyorService.removeSurveyor(surveyorId);
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        responseData.getCode(),
-//                        responseData.getMessage(),
-//                        responseData.getData()
-//                ),
-//                HttpStatus.CREATED
-//        );
-//    }
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("{surveyorId}")
+    public ResponseEntity<StandardResponse> getSurveyor(@PathVariable String surveyorId)throws SQLException {
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        200,
+                        "Surveyor List",
+                        surveyorService.surveyorById(surveyorId)),
+                HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @DeleteMapping("{surveyorId}")
+    public ResponseEntity<StandardResponse> deleteSurveyor(@PathVariable String surveyorId){
+        CommonResponseDto responseData = surveyorService.removeSurveyor(surveyorId);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        responseData.getCode(),
+                        responseData.getMessage(),
+                        responseData.getData()
+                ),
+                HttpStatus.CREATED
+        );
+    }
 //
 //    @CrossOrigin(origins = "http://localhost:4200/")
 //    @GetMapping

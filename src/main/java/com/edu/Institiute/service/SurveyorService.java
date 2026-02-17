@@ -14,9 +14,9 @@ public interface SurveyorService {
 
     CommonResponseDto updateSurveyor(RequestRegistryDto dto, String surveyorId);
 
-//    PaginatedResponseSurveyorDto surveyorById(String surveyorCode) throws SQLException;
-//
-//    CommonResponseDto removeSurveyor(String surveyorId);
+    PaginatedResponseSurveyorDto surveyorById(String surveyorCode) throws SQLException;
+
+    CommonResponseDto removeSurveyor(String surveyorId);
 //
 //    PaginatedResponseSurveyorDto allSurveyor() throws SQLException;
 }
