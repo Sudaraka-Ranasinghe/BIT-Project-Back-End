@@ -34,7 +34,7 @@ public class Surveyor {
 
     @ManyToOne
     @JoinColumn(name ="employeeId",referencedColumnName = "employeeId")
-    private Employee employee;
+    private Employee Employee;
 
     @ManyToOne
     @JoinColumn(name ="statusId",referencedColumnName = "id")

@@ -53,58 +53,58 @@ public class SurveyorRegistryImpl implements SurveyorService {
     @Autowired
     private EmployeeRepo employeeRepo;
 
-
+    // For save surveyor
     @Override
     public CommonResponseDto saveSurveyor(RequestRegistryDto dto) {
         Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
         // To Check if employeeId already exists
-        Optional<Employee> employeeExx = employeeRepo.findByExxEmployeeId(dto.getEmployee());
-        System.out.println(employeeExx);
+        Optional<Employee> employeeExx = employeeRepo.findByExxEmployeeId((dto.getEmployeeId()));
 
-        if (employeeExx.isEmpty()) {
-            try {
+        //  if (employeeExx.isEmpty()) {
+        try {
 
-                String surveyorId = generator.generateFourNumbers();
-                SurveyorDto surveyorDto = new SurveyorDto(
-                        surveyorId,
-                        dto.getSurveyorLicenseNumber(),
-                        dto.getSurveyorLicenseExpiryDate(),
-                        dto.getSurveyorSpecialization(),
-                        dto.getSurveyorRank(),
-                        employeeMapper.toEmployeeDto(employeeExx.get()),
-                        statusMapper.toStatusDto(status.get())
-                );
-                surveyorRepo.save(surveyorMapper.dtoToSurveyorEntity(surveyorDto));
+            String surveyorId = generator.generateFourNumbers();
+            SurveyorDto surveyorDto = new SurveyorDto(
+                    surveyorId,
+                    dto.getSurveyorLicenseNumber(),
+                    dto.getSurveyorLicenseExpiryDate(),
+                    dto.getSurveyorSpecialization(),
+                    dto.getSurveyorRank(),
+                    employeeMapper.toEmployeeDto(employeeExx.get()),
+                    statusMapper.toStatusDto(status.get())
+            );
+            surveyorRepo.save(surveyorMapper.dtoToSurveyorEntity(surveyorDto));
 
-                return new CommonResponseDto(201, "Surveyor  saved!", surveyorDto.getSurveyorLicenseNumber(), new ArrayList<>());
-            } catch (Exception e) {
-                throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
-            }
-        } else {
-            throw new EntryNotFoundException("Can't Save because of this Employee not exists ");
+            return new CommonResponseDto(201, "Surveyor  saved!", surveyorDto.getSurveyorLicenseNumber(), new ArrayList<>());
+        } catch (Exception e) {
+            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+            // }
+            //      } else {
+            //    throw new EntryNotFoundException("Can't Save because of this Employee not exists ");
 
         }
     }
-}
 
-//    @Override
-//    public CommonResponseDto updateSurveyor(RequestRegistryDto dto, String surveyorId) {
-//        try {
-//            Surveyor allSurveyors = surveyorRepo.findBySurveyorId(surveyorId);
-//            Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
-//
-//            allSurveyors.setSurveyorLicenseNumber(dto.getSurveyorLicenseNumber());
-//            allSurveyors.setSurveyorLicenseExpiryDate(dto.getSurveyorLicenseExpiryDate());
-//            allSurveyors.setSurveyorSpecialization(dto.getSurveyorSpecialization());
-//            allSurveyors.setSurveyorRank(dto.getSurveyorRank());
-//            surveyorRepo.save(allSurveyors);
-//
-//            return new CommonResponseDto(201, "Surveyor  Updated!", allSurveyors.getSurveyorLicenseNumber(), new ArrayList<>());
-//        }catch (Exception e){
-//            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
-//        }
-//    }
-//
+    // For update surveyor
+    @Override
+    public CommonResponseDto updateSurveyor(RequestRegistryDto dto, String surveyorId) {
+        try {
+            Surveyor allSurveyors = surveyorRepo.findBySurveyorId(surveyorId);
+            Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
+
+            allSurveyors.setSurveyorLicenseNumber(dto.getSurveyorLicenseNumber());
+            allSurveyors.setSurveyorLicenseExpiryDate(dto.getSurveyorLicenseExpiryDate());
+            allSurveyors.setSurveyorSpecialization(dto.getSurveyorSpecialization());
+            allSurveyors.setSurveyorRank(dto.getSurveyorRank());
+            allSurveyors.setStatus(status.get());
+            surveyorRepo.save(allSurveyors);
+
+            return new CommonResponseDto(201, "Surveyor  Updated!", allSurveyors.getSurveyorLicenseNumber(), new ArrayList<>());
+        } catch (Exception e) {
+            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+        }
+    }
+}           // For get surveyor one by one
 //    @Override
 //    public PaginatedResponseSurveyorDto surveyorById(String surveyorCode) throws SQLException {
 //        try {
@@ -119,26 +119,27 @@ public class SurveyorRegistryImpl implements SurveyorService {
 //                                r.getSurveyorLicenseExpiryDate(),
 //                                r.getSurveyorSpecialization(),
 //                                r.getSurveyorRank(),
-//                                r.getEmployeeEmployeeId(),
+//                                employeeMapper.toEmployeeDto(r.getEmployee()),
+//                                statusMapper.toStatusDto(r.getStatus())
 //
 //                        )
 //                );
 //            }
-//
 //            return new PaginatedResponseSurveyorDto(
 //                    surveyorRepo.count(),
 //                    surveyorResponseDos
 //            );
-//        }catch (Exception e){
+//        } catch (Exception e) {
 //            throw new EntryNotFoundException("Can't find any data for provided ID...!");
 //        }
 //
 //    }
 //
+//        // Remove Suveyors
 //    @Override
 //    public CommonResponseDto removeSurveyor(String surveyorId) {
 //
-//        Optional<Surveyor> surveyor = surveyorRepo.getSurveyorsById(surveyorId);
+//        Optional<Surveyor> surveyor = surveyorRepo.getSurveyorById(surveyorId);
 //
 //        if (surveyor.isPresent()) {
 //            surveyorRepo.delete(surveyor.get());
@@ -147,7 +148,7 @@ public class SurveyorRegistryImpl implements SurveyorService {
 //            throw new EntryNotFoundException("Can't find any Surveyor---...!");
 //        }
 //    }
-//
+//        // For get all surveyors list
 //    @Override
 //    public PaginatedResponseSurveyorDto allSurveyor() {
 //        try {
@@ -162,7 +163,8 @@ public class SurveyorRegistryImpl implements SurveyorService {
 //                                r.getSurveyorLicenseExpiryDate(),
 //                                r.getSurveyorSpecialization(),
 //                                r.getSurveyorRank(),
-//                                r.getEmployeeEmployeeId(),
+//                                employeeMapper.toEmployeeDto(r.getEmployee()),
+//                                statusMapper.toStatusDto(r.getStatus())
 //                        )
 //                );
 //            }

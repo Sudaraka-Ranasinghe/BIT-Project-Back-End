@@ -31,20 +31,20 @@ public class SurveyorController {
         );
     }
 
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @PutMapping("{surveyorId}")
-//    public ResponseEntity<StandardResponse> updateSurveyor(@RequestBody RequestRegistryDto data, @PathVariable String surveyorId){
-//        CommonResponseDto responseData = surveyorService.updateSurveyor(data,surveyorId);
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        responseData.getCode(),
-//                        responseData.getMessage(),
-//                        responseData.getData()
-//                ),
-//                HttpStatus.CREATED
-//        );
-//    }
-//
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @PutMapping("{surveyorId}")
+    public ResponseEntity<StandardResponse> updateSurveyor(@RequestBody RequestRegistryDto data, @PathVariable String surveyorId){
+        CommonResponseDto responseData = surveyorService.updateSurveyor(data,surveyorId);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        responseData.getCode(),
+                        responseData.getMessage(),
+                        responseData.getData()
+                ),
+                HttpStatus.CREATED
+        );
+    }
+
 //    @CrossOrigin(origins = "http://localhost:4200/")
 //    @GetMapping("{surveyorId}")
 //    public ResponseEntity<StandardResponse> getSurveyor(@PathVariable String surveyorId)throws SQLException {
