@@ -17,6 +17,6 @@ public class SurveyorResponseDto {
     private Date surveyorLicenseExpiryDate;
     private String surveyorSpecialization;
     private String surveyorRank;
-    private EmployeeDto Employee;
+    private EmployeeDto EmployeeId;
     private StatusDto Status;
 }

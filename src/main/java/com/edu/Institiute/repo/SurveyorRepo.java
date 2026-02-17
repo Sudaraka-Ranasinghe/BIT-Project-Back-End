@@ -20,5 +20,5 @@ public interface SurveyorRepo extends JpaRepository<Surveyor,String> {
     List<Surveyor> getAllSurveyorForProvidedId(@Param("surveyorCode") String surveyorCode);
 
     @Query(value = "SELECT * FROM surveyor WHERE surveyor_id=:surveyorId", nativeQuery = true)
-    Optional<Surveyor> getSurveyorsById(@Param("surveyorId")String surveyorId);
+    Optional<Surveyor> getSurveyorById(@Param("surveyorId")String surveyorId);
 }
