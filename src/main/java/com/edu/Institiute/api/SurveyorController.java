@@ -14,6 +14,7 @@ import java.sql.SQLException;
 @RestController
 @RequestMapping("/api/v1/surveyor")
 public class SurveyorController {
+
     @Autowired
     private SurveyorService surveyorService;
 
@@ -57,19 +58,19 @@ public class SurveyorController {
         );
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
-    @DeleteMapping("{surveyorId}")
-    public ResponseEntity<StandardResponse> deleteSurveyor(@PathVariable String surveyorId){
-        CommonResponseDto responseData = surveyorService.removeSurveyor(surveyorId);
-        return new ResponseEntity<>(
-                new StandardResponse(
-                        responseData.getCode(),
-                        responseData.getMessage(),
-                        responseData.getData()
-                ),
-                HttpStatus.CREATED
-        );
-    }
+//    @CrossOrigin(origins = "http://localhost:4200/")
+//    @DeleteMapping("{surveyorId}")
+//    public ResponseEntity<StandardResponse> deleteSurveyor(@PathVariable String surveyorId){
+//        CommonResponseDto responseData = surveyorService.removeSurveyor(surveyorId);
+//        return new ResponseEntity<>(
+//                new StandardResponse(
+//                        responseData.getCode(),
+//                        responseData.getMessage(),
+//                        responseData.getData()
+//                ),
+//                HttpStatus.CREATED
+//        );
+//    }
 //
 //    @CrossOrigin(origins = "http://localhost:4200/")
 //    @GetMapping

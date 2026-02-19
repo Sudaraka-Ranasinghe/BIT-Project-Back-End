@@ -1,7 +1,5 @@
 package com.edu.Institiute.dto.requestDto;
 
-import com.edu.Institiute.dto.EmployeeDto;
-import com.edu.Institiute.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -71,25 +69,23 @@ public class RequestRegistryDto {
 
 
     //Surveyor
-    //private String surveyorId;
     private String surveyorLicenseNumber;
     private Date surveyorLicenseExpiryDate;
     private String surveyorSpecialization;
     private String surveyorRank;
     private String employeeId;
 
-    // SurveyRequest
-//    private String surveyRequestId;
-//    private String requestDescription;
-//    private Date requestDate;
-//    private Date preferredDueDate;
-//    private String locationDescription;
-//    private String purposeOfSurvey;
-//    private String assignedAdminID;
-//    private String requestCreatedBy;
-//    private Date requestCreatedDate;
-//    private String requestModifiedBy;
-//    private Date requestModifiedDate;
-//    private Client Client;
+     //SurveyRequest
+    private String requestDescription;
+    private Date requestDate;
+    private Date preferredDueDate;
+    private String locationDescription;
+    private String purposeOfSurvey;
+    private String assignedAdminId;
+    private String requestCreatedBy;
+    private Date requestCreatedDate;
+    private String requestModifiedBy;
+    private Date requestModifiedDate;
+    private String ClientId;
 
 }

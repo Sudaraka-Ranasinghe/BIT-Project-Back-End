@@ -1,74 +1,84 @@
-//package com.edu.Institiute.service.impl;
-//
-//import com.edu.Institiute.dto.SurveyRequestDto;
-//import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
-//import com.edu.Institiute.dto.responseDto.CommonResponseDto;
-//import com.edu.Institiute.dto.responseDto.SurveyRequestResponseDto;
-//import com.edu.Institiute.dto.responseDto.paginated.PaginatedResponseSurveyRequestDto;
-//import com.edu.Institiute.entity.Status;
-//import com.edu.Institiute.entity.SurveyRequest;
-//import com.edu.Institiute.exception.EntryNotFoundException;
-//import com.edu.Institiute.repo.StatusRepo;
-//import com.edu.Institiute.repo.SurveyRequestRepo;
-//import com.edu.Institiute.service.SurveyRequestService;
-//import com.edu.Institiute.utill.Generator;
-//import com.edu.Institiute.utill.mapper.StatusMapper;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//
-//import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Optional;
-//@Service
-//@Transactional
-//public class SurveyRequestRegistryImpl implements SurveyRequestService {
-//
-//    @Autowired
-//    private StatusRepo statusRepo;
-//
-//    @Autowired
-//    private Generator generator;
-//
-//    @Autowired
-//    private SurveyRequestMapper surveyRequestMapper;
-//
-//    @Autowired
-//    private SurveyRequestRepo surveyRequestRepo;
-//
-//    @Autowired
-//    private StatusMapper statusMapper;
-//
-//    @Override
-//    public CommonResponseDto saveSurveyRequest(RequestRegistryDto dto) {
-//        Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
-//        try {
-//
-//            String surveyRequestId =  generator.generateFourNumbers();
-//            SurveyRequestDto surveyRequestDto = new SurveyRequestDto(
-//                    surveyRequestId,
-//                    dto.getRequestDescription(),
-//                    dto.getRequestDate(),
-//                    dto.getPreferredDueDate(),
-//                    dto.getLocationDescription(),
-//                    dto.getPurposeOfSurvey(),
-//                    dto.getAssignedAdminID(),
-//                    dto.getRequestCreatedBy(),
-//                    dto.getRequestCreatedDate(),
-//                    dto.getRequestModifiedBy(),
-//                    dto.getRequestModifiedDate(),
-//                    dto.getClientId(),
-//                    statusMapper.toStatusDto(status.get())
-//            );
-//            surveyRequestRepo.save(surveyRequestMapper.dtoToSurveyRequestEntity(surveyRequestDto));
-//
-//            return new CommonResponseDto(201, "SurveyRequest  saved!", surveyRequestDto.getRequestDescription(), new ArrayList<>());
-//        }catch (Exception e){
-//            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
-//        }
-//    }
-//
+package com.edu.Institiute.service.impl;
+
+import com.edu.Institiute.dto.SurveyRequestDto;
+import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
+import com.edu.Institiute.dto.responseDto.CommonResponseDto;
+import com.edu.Institiute.dto.responseDto.paginated.PaginatedResponseSurveyRequestDto;
+import com.edu.Institiute.entity.Client;
+import com.edu.Institiute.entity.Employee;
+import com.edu.Institiute.entity.Status;
+import com.edu.Institiute.exception.EntryNotFoundException;
+import com.edu.Institiute.repo.ClientRepo;
+import com.edu.Institiute.repo.StatusRepo;
+import com.edu.Institiute.repo.SurveyRequestRepo;
+import com.edu.Institiute.service.SurveyRequestService;
+import com.edu.Institiute.utill.Generator;
+import com.edu.Institiute.utill.mapper.ClientMapper;
+import com.edu.Institiute.utill.mapper.StatusMapper;
+import com.edu.Institiute.utill.mapper.SurveyRequestMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+@Service
+@Transactional
+public class SurveyRequestRegistryImpl implements SurveyRequestService {
+
+    @Autowired
+    private Generator generator;
+
+
+    @Autowired
+    private SurveyRequestMapper surveyRequestMapper;
+
+    @Autowired
+    private StatusRepo statusRepo;
+
+    private SurveyRequestRepo surveyRequestRepo;
+    @Autowired
+    private StatusMapper statusMapper;
+
+    @Autowired
+    private ClientRepo clientRepo;
+
+    @Autowired
+    private ClientMapper clientMapper;
+
+    @Override
+    public CommonResponseDto saveSurveyRequest(RequestRegistryDto dto) {
+        Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
+        Optional<Client> exxClient = clientRepo.findByExxClientId(dto.getClientId());
+        try {
+
+            String surveyRequestId = generator.generateFourNumbers();
+            SurveyRequestDto surveyRequestDto = new SurveyRequestDto(
+                    surveyRequestId,
+                    dto.getRequestDescription(),
+                    dto.getRequestDate(),
+                    dto.getPreferredDueDate(),
+                    dto.getLocationDescription(),
+                    dto.getPurposeOfSurvey(),
+                    dto.getAssignedAdminId(),
+                    dto.getRequestCreatedBy(),
+                    dto.getRequestCreatedDate(),
+                    dto.getRequestModifiedBy(),
+                    dto.getRequestModifiedDate(),
+                    statusMapper.toStatusDto(status.get()),
+                    clientMapper.toClientDto(exxClient.get())
+            );
+            surveyRequestRepo.save(surveyRequestMapper.dtoToSurveyRequestEntity(surveyRequestDto));
+
+            return new CommonResponseDto(201, "SurveyRequest  saved!", surveyRequestDto.getRequestDescription(), new ArrayList<>());
+        } catch (Exception e) {
+            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+        }
+    }
+
+}
 //    @Override
 //    public CommonResponseDto updateSurveyRequest(RequestRegistryDto dto, String surveyRequestId) {
 //        try {
