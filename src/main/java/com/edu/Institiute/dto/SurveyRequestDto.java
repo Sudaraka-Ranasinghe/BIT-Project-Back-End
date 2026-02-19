@@ -1,7 +1,5 @@
 package com.edu.Institiute.dto;
 
-//import com.edu.Institiute.entity.Client;
-import com.edu.Institiute.entity.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +17,11 @@ public class SurveyRequestDto {
     private Date preferredDueDate;
     private String locationDescription;
     private String purposeOfSurvey;
-    private String assignedAdminID;
+    private String assignedAdminId;
     private String requestCreatedBy;
     private Date requestCreatedDate;
     private String requestModifiedBy;
     private Date requestModifiedDate;
     private StatusDto Status;
-//    private Client Client;
+    private ClientDto client;
 }
