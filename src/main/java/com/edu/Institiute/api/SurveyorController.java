@@ -71,16 +71,16 @@ public class SurveyorController {
 //                HttpStatus.CREATED
 //        );
 //    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping
-//    public ResponseEntity<StandardResponse> getAllSurveyors()throws SQLException{
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        200,
-//                        "Surveyor List",
-//                        surveyorService.allSurveyor()),
-//                HttpStatus.OK
-//        );
-//    }
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping
+    public ResponseEntity<StandardResponse> getAllSurveyors()throws SQLException{
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        200,
+                        "Surveyor List",
+                        surveyorService.allSurveyor()),
+                HttpStatus.OK
+        );
+    }
 }
