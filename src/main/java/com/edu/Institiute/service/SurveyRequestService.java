@@ -11,11 +11,11 @@ import java.sql.SQLException;
 public interface SurveyRequestService {
     CommonResponseDto saveSurveyRequest(RequestRegistryDto dto);
 
-    CommonResponseDto updateSurveyRequest(RequestRegistryDto dto, String surveyRequestId);
-
-    PaginatedResponseSurveyRequestDto surveyRequestById(String surveyRequestCode) throws SQLException;
-
-    CommonResponseDto removeSurveyRequest(String surveyRequestId);
-
-    PaginatedResponseSurveyRequestDto allSurveyRequest() throws SQLException;
+//    CommonResponseDto updateSurveyRequest(RequestRegistryDto dto, String surveyRequestId);
+//
+//    PaginatedResponseSurveyRequestDto surveyRequestById(String surveyRequestCode) throws SQLException;
+//
+//    CommonResponseDto removeSurveyRequest(String surveyRequestId);
+//
+//    PaginatedResponseSurveyRequestDto allSurveyRequest() throws SQLException;
 }

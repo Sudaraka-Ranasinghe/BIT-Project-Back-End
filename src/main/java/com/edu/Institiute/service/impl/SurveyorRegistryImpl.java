@@ -18,7 +18,6 @@ import com.edu.Institiute.utill.Generator;
 import com.edu.Institiute.utill.mapper.EmployeeMapper;
 import com.edu.Institiute.utill.mapper.StatusMapper;
 import com.edu.Institiute.utill.mapper.SurveyorMapper;
-import com.vladmihalcea.hibernate.type.basic.NullableCharacterType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,7 +59,7 @@ public class SurveyorRegistryImpl implements SurveyorService {
         // To Check if employeeId already exists
         Optional<Employee> employeeExx = employeeRepo.findByExxEmployeeId((dto.getEmployeeId()));
 
-        //  if (employeeExx.isEmpty()) {
+          if (!employeeExx.isEmpty()) {
         try {
 
             String surveyorId = generator.generateFourNumbers();
@@ -78,11 +77,11 @@ public class SurveyorRegistryImpl implements SurveyorService {
             return new CommonResponseDto(201, "Surveyor  saved!", surveyorDto.getSurveyorLicenseNumber(), new ArrayList<>());
         } catch (Exception e) {
             throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
-            // }
-            //      } else {
-            //    throw new EntryNotFoundException("Can't Save because of this Employee not exists ");
-
         }
+          } else {
+              throw new EntryNotFoundException("Can't Save because of this Employee not exists ");
+          }
+
     }
 
     // For update surveyor

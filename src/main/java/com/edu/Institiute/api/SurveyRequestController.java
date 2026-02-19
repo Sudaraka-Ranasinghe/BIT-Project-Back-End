@@ -1,36 +1,38 @@
-//package com.edu.Institiute.api;
-//
-//import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
-//import com.edu.Institiute.dto.responseDto.CommonResponseDto;
-//import com.edu.Institiute.service.SurveyRequestService;
-//import com.edu.Institiute.utill.StandardResponse;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.sql.SQLException;
-//
-//@CrossOrigin(origins = "http://localhost:4200/")
-//@RestController
-//@RequestMapping("/api/v1/surveyRequest")
-//public class SurveyRequestController {
-//    @Autowired
-//    private SurveyRequestService surveyRequestService;
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @PostMapping
-//    public ResponseEntity<StandardResponse> savedSurveyRequest(@RequestBody RequestRegistryDto data){
-//        CommonResponseDto commonResponseDto = surveyRequestService.saveSurveyRequest(data);
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        commonResponseDto.getCode(),
-//                        commonResponseDto.getMessage(),
-//                        commonResponseDto.getData()
-//                ),
-//                HttpStatus.CREATED
-//        );
-//    }
+package com.edu.Institiute.api;
+
+import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
+import com.edu.Institiute.dto.responseDto.CommonResponseDto;
+import com.edu.Institiute.service.SurveyRequestService;
+import com.edu.Institiute.utill.StandardResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.SQLException;
+
+@CrossOrigin(origins = "http://localhost:4200/")
+@RestController
+@RequestMapping("/api/v1/surveyRequest")
+public class SurveyRequestController {
+
+    @Autowired
+    private SurveyRequestService surveyRequestService;
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @PostMapping
+    public ResponseEntity<StandardResponse> saveSurveyRequest(@RequestBody RequestRegistryDto data) {
+        CommonResponseDto commonResponseDto = surveyRequestService.saveSurveyRequest(data);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        commonResponseDto.getCode(),
+                        commonResponseDto.getMessage(),
+                        commonResponseDto.getData()
+                ),
+                HttpStatus.CREATED
+        );
+    }
+}
 //
 //    @CrossOrigin(origins = "http://localhost:4200/")
 //    @PutMapping("{surveyRequestId}")
