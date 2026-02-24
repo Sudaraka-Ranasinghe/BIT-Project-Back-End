@@ -32,57 +32,59 @@ public class SurveyRequestController {
                 HttpStatus.CREATED
         );
     }
+
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @PutMapping("{surveyRequestId}")
+    public ResponseEntity<StandardResponse> updateSurveyRequest(@RequestBody RequestRegistryDto data, @PathVariable String surveyRequestId) {
+        CommonResponseDto responseData = surveyRequestService.updateSurveyRequest(data, surveyRequestId);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        responseData.getCode(),
+                        responseData.getMessage(),
+                        responseData.getData()
+                ),
+                HttpStatus.CREATED
+        );
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("{surveyRequestId}")
+    public ResponseEntity<StandardResponse> getSurveyRequest(@PathVariable String surveyRequestId) throws SQLException {
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        200,
+                        "SurveyRequest List",
+                        surveyRequestService.surveyRequestById(surveyRequestId)),
+                HttpStatus.OK
+        );
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @DeleteMapping("{surveyRequestId}")
+    public ResponseEntity<StandardResponse> deleteSurveyRequest(@PathVariable String surveyRequestId) {
+        CommonResponseDto responseData = surveyRequestService.removeSurveyRequest(surveyRequestId);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        responseData.getCode(),
+                        responseData.getMessage(),
+                        responseData.getData()
+                ),
+                HttpStatus.CREATED
+        );
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping
+    public ResponseEntity<StandardResponse> getAllSurveyRequests()throws SQLException{
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        200,
+                        "SurveyRequest List",
+                        surveyRequestService.allSurveyRequest()),
+                HttpStatus.OK
+        );
+    }
 }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @PutMapping("{surveyRequestId}")
-//    public ResponseEntity<StandardResponse> updateSurveyRequest(@RequestBody RequestRegistryDto data, @PathVariable String surveyRequestId){
-//        CommonResponseDto responseData = surveyRequestService.updateSurveyRequest(data,surveyRequestId);
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        responseData.getCode(),
-//                        responseData.getMessage(),
-//                        responseData.getData()
-//                ),
-//                HttpStatus.CREATED
-//        );
-//    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping("{surveyRequestId}")
-//    public ResponseEntity<StandardResponse> getSurveyRequest(@PathVariable String surveyRequestId)throws SQLException {
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        200,
-//                        "SurveyRequest List",
-//                        surveyRequestService.surveyRequestById(surveyRequestId)),
-//                HttpStatus.OK
-//        );
-//    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @DeleteMapping("{surveyRequestId}")
-//    public ResponseEntity<StandardResponse> deleteSurveyRequest(@PathVariable String surveyRequestId){
-//        CommonResponseDto responseData = surveyRequestService.removeSurveyRequest(surveyRequestId);
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        responseData.getCode(),
-//                        responseData.getMessage(),
-//                        responseData.getData()
-//                ),
-//                HttpStatus.CREATED
-//        );
-//    }
-//
-//    @CrossOrigin(origins = "http://localhost:4200/")
-//    @GetMapping
-//    public ResponseEntity<StandardResponse> getAllSurveyRequests()throws SQLException{
-//        return new ResponseEntity<>(
-//                new StandardResponse(
-//                        200,
-//                        "SurveyRequest List",
-//                        surveyRequestService.allSurveyRequest()),
-//                HttpStatus.OK
-//        );
-//    }
-//}
