@@ -1,5 +1,6 @@
 package com.edu.Institiute.repo;
 
+import com.edu.Institiute.entity.Client;
 import com.edu.Institiute.entity.SurveyRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,7 @@ public interface SurveyRequestRepo extends JpaRepository<SurveyRequest,String> {
 
     @Query(value = "SELECT * FROM surveyRequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
     Optional<SurveyRequest> getSurveyRequestsById(@Param("surveyRequestId")String surveyRequestId);
+
+    @Query(value = "SELECT * FROM surveyRequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
+    Optional<SurveyRequest> findByExxSurveyRequestId(@Param("surveyRequestId") String surveyRequestId);
 }
