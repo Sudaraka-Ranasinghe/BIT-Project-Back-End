@@ -1,5 +1,7 @@
 package com.edu.Institiute.dto.requestDto;
 
+import com.edu.Institiute.dto.StatusDto;
+import com.edu.Institiute.dto.SurveyRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -87,5 +89,20 @@ public class RequestRegistryDto {
     private String requestModifiedBy;
     private Date requestModifiedDate;
     private String ClientId;
+
+
+    // Survey Project
+    private String projectTitle;
+    private String projectDescription;
+    private Date officialStartDate;
+    private Date estimatedEndDate;
+    private Date actualEndDate;
+    private String projectLocation;
+    private String projectValue;
+    private String projectCreatedBy;
+    private Date projectCreatedDate;
+    private String projectModifiedBy;
+    private Date projectModifiedDate;
+    private String SurveyRequestId;
 
 }
