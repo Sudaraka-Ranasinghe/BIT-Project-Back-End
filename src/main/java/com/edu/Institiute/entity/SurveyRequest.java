@@ -51,7 +51,7 @@ public class SurveyRequest {
     private Date requestModifiedDate;
 
     @ManyToOne
-    @JoinColumn(name ="statusid",referencedColumnName = "id")
+    @JoinColumn(name ="statusId",referencedColumnName = "id")
     private Status Status;
 
     @ManyToOne

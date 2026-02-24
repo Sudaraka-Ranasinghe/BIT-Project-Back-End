@@ -134,48 +134,47 @@ public class SurveyorRegistryImpl implements SurveyorService {
         }
 
     }
+
+        // Remove Suveyors
+    @Override
+    public CommonResponseDto removeSurveyor(String surveyorId) {
+
+        Optional<Surveyor> surveyor = surveyorRepo.getSurveyorById(surveyorId);
+
+        if (surveyor.isPresent()) {
+            surveyorRepo.delete(surveyor.get());
+            return new CommonResponseDto(201, "Surveyor was deleted! ", true, new ArrayList<>());
+        } else {
+            throw new EntryNotFoundException("Can't find any Surveyor---...!");
+        }
+    }
+        // For get all surveyors list
+    @Override
+    public PaginatedResponseSurveyorDto allSurveyor() {
+        try {
+            List<Surveyor> allSurveyorForProvidedId = surveyorRepo.findAll();
+            List<SurveyorResponseDto> surveyorResponseDos = new ArrayList<>();
+
+            for (Surveyor r : allSurveyorForProvidedId) {
+                surveyorResponseDos.add(
+                        new SurveyorResponseDto(
+                                r.getSurveyorId(),
+                                r.getSurveyorLicenseNumber(),
+                                r.getSurveyorLicenseExpiryDate(),
+                                r.getSurveyorSpecialization(),
+                                r.getSurveyorRank(),
+                                employeeMapper.toEmployeeDto(r.getEmployee()),
+                                statusMapper.toStatusDto(r.getStatus())
+                        )
+                );
+            }
+
+            return new PaginatedResponseSurveyorDto(
+                    surveyorRepo.count(),
+                    surveyorResponseDos
+            );
+        }catch (Exception e){
+            throw new EntryNotFoundException("Can't find any data...!");
+        }
+    }
 }
-//
-//        // Remove Suveyors
-//    @Override
-//    public CommonResponseDto removeSurveyor(String surveyorId) {
-//
-//        Optional<Surveyor> surveyor = surveyorRepo.getSurveyorById(surveyorId);
-//
-//        if (surveyor.isPresent()) {
-//            surveyorRepo.delete(surveyor.get());
-//            return new CommonResponseDto(201, "Surveyor was deleted! ", true, new ArrayList<>());
-//        } else {
-//            throw new EntryNotFoundException("Can't find any Surveyor---...!");
-//        }
-//    }
-//        // For get all surveyors list
-//    @Override
-//    public PaginatedResponseSurveyorDto allSurveyor() {
-//        try {
-//            List<Surveyor> allSurveyorForProvidedId = surveyorRepo.findAll();
-//            List<SurveyorResponseDto> surveyorResponseDos = new ArrayList<>();
-//
-//            for (Surveyor r : allSurveyorForProvidedId) {
-//                surveyorResponseDos.add(
-//                        new SurveyorResponseDto(
-//                                r.getSurveyorId(),
-//                                r.getSurveyorLicenseNumber(),
-//                                r.getSurveyorLicenseExpiryDate(),
-//                                r.getSurveyorSpecialization(),
-//                                r.getSurveyorRank(),
-//                                employeeMapper.toEmployeeDto(r.getEmployee()),
-//                                statusMapper.toStatusDto(r.getStatus())
-//                        )
-//                );
-//            }
-//
-//            return new PaginatedResponseSurveyorDto(
-//                    surveyorRepo.count(),
-//                    surveyorResponseDos
-//            );
-//        }catch (Exception e){
-//            throw new EntryNotFoundException("Can't find any data...!");
-//        }
-//    }
-//}
