@@ -1,6 +1,7 @@
 package com.edu.Institiute.repo;
 
 
+import com.edu.Institiute.entity.Client;
 import com.edu.Institiute.entity.Surveyor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,4 +22,7 @@ public interface SurveyorRepo extends JpaRepository<Surveyor,String> {
 
     @Query(value = "SELECT * FROM surveyor WHERE surveyor_id=:surveyorId", nativeQuery = true)
     Optional<Surveyor> getSurveyorById(@Param("surveyorId")String surveyorId);
+
+    @Query(value = "SELECT * FROM surveyor WHERE surveyor_id=:surveyorId", nativeQuery = true)
+    Optional<Surveyor> findByExxSurveyorId(@Param("surveyorId") String surveyorId);
 }
