@@ -1,6 +1,7 @@
 package com.edu.Institiute.repo;
 
 import com.edu.Institiute.entity.SurveyProject;
+import com.edu.Institiute.entity.SurveyRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +20,7 @@ public interface SurveyProjectRepo extends JpaRepository<SurveyProject,Integer> 
 
     @Query(value = "SELECT * FROM surveyProject WHERE project_id=:projectId", nativeQuery = true)
     Optional<SurveyProject> getProjectById(@Param("projectId")String projectId);
+
+    @Query(value = "SELECT * FROM surveyProject WHERE survey_project_id=:surveyProjectId", nativeQuery = true)
+    Optional<SurveyProject> findByExxSurveyProjectId(@Param("surveyProjectId") String surveyProjectId);
 }

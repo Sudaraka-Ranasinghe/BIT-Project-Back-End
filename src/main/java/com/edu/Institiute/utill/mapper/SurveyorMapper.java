@@ -1,8 +1,6 @@
 package com.edu.Institiute.utill.mapper;
 
-import com.edu.Institiute.dto.EmployeeDto;
 import com.edu.Institiute.dto.SurveyorDto;
-import com.edu.Institiute.entity.Employee;
 import com.edu.Institiute.entity.Surveyor;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Repository;
