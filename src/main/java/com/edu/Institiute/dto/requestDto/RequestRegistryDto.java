@@ -118,4 +118,15 @@ public class RequestRegistryDto {
     private String SurveyProjectId;
     private String SurveyorId;
 
+    // Survey Instrument
+    private String instrumentName;
+    private String serialNumber;
+    private String instrumentType;
+    private Date calibrationDate;
+    private String nextCalibrationDue;
+    private String instrumentCreatedBy;
+    private Date instrumentCreatedDate;
+    private String instrumentModifiedBy;
+    private Date instrumentModifiedDate;
+
 }
