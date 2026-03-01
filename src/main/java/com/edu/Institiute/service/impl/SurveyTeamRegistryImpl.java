@@ -83,6 +83,5 @@ public class SurveyTeamRegistryImpl implements SurveyTeamService {
         } else {
             throw new EntryNotFoundException("Can't Save because of this Surveyor or Survye Project not exists ");
         }
-
     }
 }

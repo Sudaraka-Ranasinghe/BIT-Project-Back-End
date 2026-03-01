@@ -52,29 +52,31 @@ public class SurveyRequestRegistryImpl implements SurveyRequestService {
     public CommonResponseDto saveSurveyRequest(RequestRegistryDto dto) {
         Optional<Status> status = statusRepo.findStatusById(dto.getStatus());
         Optional<Client> exxClient = clientRepo.findByExxClientId(dto.getClientId());
-        try {
-
-            String surveyRequestId = generator.generateFourNumbers();
-            SurveyRequestDto surveyRequestDto = new SurveyRequestDto(
-                    surveyRequestId,
-                    dto.getRequestDescription(),
-                    dto.getRequestDate(),
-                    dto.getPreferredDueDate(),
-                    dto.getLocationDescription(),
-                    dto.getPurposeOfSurvey(),
-                    dto.getAssignedAdminId(),
-                    dto.getRequestCreatedBy(),
-                    dto.getRequestCreatedDate(),
-                    dto.getRequestModifiedBy(),
-                    dto.getRequestModifiedDate(),
-                    statusMapper.toStatusDto(status.get()),
-                    clientMapper.toClientDto(exxClient.get())
-            );
-            surveyRequestRepo.save(surveyRequestMapper.dtoToSurveyRequestEntity(surveyRequestDto));
-
-            return new CommonResponseDto(201, "SurveyRequest  saved!", surveyRequestDto.getRequestDescription(), new ArrayList<>());
-        } catch (Exception e) {
-            throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+        if (!exxClient.isEmpty()) {
+            try {
+                String surveyRequestId = generator.generateFourNumbers();
+                SurveyRequestDto surveyRequestDto = new SurveyRequestDto(
+                        surveyRequestId,
+                        dto.getRequestDescription(),
+                        dto.getRequestDate(),
+                        dto.getPreferredDueDate(),
+                        dto.getLocationDescription(),
+                        dto.getPurposeOfSurvey(),
+                        dto.getAssignedAdminId(),
+                        dto.getRequestCreatedBy(),
+                        dto.getRequestCreatedDate(),
+                        dto.getRequestModifiedBy(),
+                        dto.getRequestModifiedDate(),
+                        statusMapper.toStatusDto(status.get()),
+                        clientMapper.toClientDto(exxClient.get())
+                );
+                surveyRequestRepo.save(surveyRequestMapper.dtoToSurveyRequestEntity(surveyRequestDto));
+                return new CommonResponseDto(201, "SurveyRequest  saved!", surveyRequestDto.getRequestDescription(), new ArrayList<>());
+            } catch (Exception e) {
+                throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
+            }
+        }else {
+            throw new EntryNotFoundException("Can't Save because of this Client not exists ");
         }
     }
 
