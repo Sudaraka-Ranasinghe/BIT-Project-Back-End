@@ -129,4 +129,16 @@ public class RequestRegistryDto {
     private String instrumentModifiedBy;
     private Date instrumentModifiedDate;
 
+    // Survey Point
+    private Float north;
+    private Float east;
+    private Float elevation;
+    private String pointDescription;
+    private String pointType;
+    private String pointCreatedBy;
+    private Date pointCreatedDate;
+    private String pointModifiedBy;
+    private Date pointModifiedDate;
+    private String ProjectId;
+
 }
