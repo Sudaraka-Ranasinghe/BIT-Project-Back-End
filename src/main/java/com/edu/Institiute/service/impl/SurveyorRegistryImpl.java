@@ -60,8 +60,7 @@ public class SurveyorRegistryImpl implements SurveyorService {
         Optional<Employee> employeeExx = employeeRepo.findByExxEmployeeId((dto.getEmployeeId()));
 
           if (!employeeExx.isEmpty()) {
-        try {
-
+            try {
             String surveyorId = generator.generateFourNumbers();
             SurveyorDto surveyorDto = new SurveyorDto(
                     surveyorId,
@@ -73,7 +72,6 @@ public class SurveyorRegistryImpl implements SurveyorService {
                     statusMapper.toStatusDto(status.get())
             );
             surveyorRepo.save(surveyorMapper.dtoToSurveyorEntity(surveyorDto));
-
             return new CommonResponseDto(201, "Surveyor  saved!", surveyorDto.getSurveyorLicenseNumber(), new ArrayList<>());
         } catch (Exception e) {
             throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
@@ -81,7 +79,6 @@ public class SurveyorRegistryImpl implements SurveyorService {
           } else {
               throw new EntryNotFoundException("Can't Save because of this Employee not exists ");
           }
-
     }
 
     // For update surveyor
