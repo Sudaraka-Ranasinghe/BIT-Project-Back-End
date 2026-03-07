@@ -2,7 +2,7 @@ package com.edu.Institiute.api;
 
 import com.edu.Institiute.dto.requestDto.RequestRegistryDto;
 import com.edu.Institiute.dto.responseDto.CommonResponseDto;
-import com.edu.Institiute.service.SurveyInstrumentService;
+import com.edu.Institiute.service.LandParcelService;
 import com.edu.Institiute.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,16 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200/")
 @RestController
-@RequestMapping("/api/v1/surveyInstrument")
-public class SurveyInstrumentController {
-
+@RequestMapping("/api/v1/landParcel")
+public class LandParcelController {
     @Autowired
-    private SurveyInstrumentService surveyInstrumentService;
+    private LandParcelService landParcelService;
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @PostMapping
-    public ResponseEntity<StandardResponse> saveSurveyInstrument(@RequestBody RequestRegistryDto data){
-        CommonResponseDto commonResponseDto = surveyInstrumentService.saveSurveyInstrument(data);
+    public ResponseEntity<StandardResponse> saveLandParcel(@RequestBody RequestRegistryDto data){
+        CommonResponseDto commonResponseDto = landParcelService.saveLandParcel(data);
         return new ResponseEntity<>(
                 new StandardResponse(
                         commonResponseDto.getCode(),

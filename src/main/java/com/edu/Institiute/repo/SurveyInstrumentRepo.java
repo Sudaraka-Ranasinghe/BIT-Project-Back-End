@@ -11,12 +11,12 @@ import java.util.Optional;
 
 @Repository
 public interface SurveyInstrumentRepo extends JpaRepository<SurveyInstrument,String> {
-    @Query(value = "SELECT * FROM surveyInstrument WHERE survey_Instrument_id=:surveyInstrumentId", nativeQuery = true)
-    SurveyInstrument findBySurveyInstrumentId(@Param("surveyInstrumentId") String surveyInstrumentId);
-
-    @Query(value = "SELECT * FROM surveyInstrument WHERE survey_Instrument_id=:surveyInstrumentCode", nativeQuery = true)
-    List<SurveyInstrument> getAllSurveyInstrumentForProvidedId(@Param("surveyorCode") String surveyorCode);
-
-    @Query(value = "SELECT * FROM surveyInstrument WHERE survey_Instrument_id=:surveyInstrumentId", nativeQuery = true)
-    Optional<SurveyInstrument> getSurveyInstrumentById(@Param("surveyInstrumentId")String surveyInstrumentId);
+//    @Query(value = "SELECT * FROM surveyInstrument WHERE survey_Instrument_id=:surveyInstrumentId", nativeQuery = true)
+//    SurveyInstrument findBySurveyInstrumentId(@Param("surveyInstrumentId") String surveyInstrumentId);
+//
+//    @Query(value = "SELECT * FROM surveyInstrument WHERE survey_Instrument_id=:surveyInstrumentCode", nativeQuery = true)
+//    List<SurveyInstrument> getAllSurveyInstrumentForProvidedId(@Param("surveyorCode") String surveyorCode);
+//
+//    @Query(value = "SELECT * FROM surveyInstrument WHERE survey_Instrument_id=:surveyInstrumentId", nativeQuery = true)
+//    Optional<SurveyInstrument> getSurveyInstrumentById(@Param("surveyInstrumentId")String surveyInstrumentId);
 }

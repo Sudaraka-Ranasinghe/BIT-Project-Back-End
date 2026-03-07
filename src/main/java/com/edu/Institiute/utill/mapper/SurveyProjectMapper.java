@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Mapper(componentModel = "spring")
 public interface SurveyProjectMapper {
     SurveyProject dtoToSurveyProjectEntity(SurveyProjectDto surveyProjectDto);
-    SurveyProjectDto toSurveyProjectrDto(SurveyProject surveyProject);
+    SurveyProjectDto toSurveyProjectDto(SurveyProject surveyProject);
 }

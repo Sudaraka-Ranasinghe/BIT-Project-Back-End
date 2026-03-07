@@ -18,7 +18,7 @@ public class SurveyPointController {
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @PostMapping
-    public ResponseEntity<StandardResponse> savedSurveyPoint(@RequestBody RequestRegistryDto data){
+    public ResponseEntity<StandardResponse> saveSurveyPoint(@RequestBody RequestRegistryDto data){
         CommonResponseDto commonResponseDto = surveyPointService.saveSurveyPoint(data);
         return new ResponseEntity<>(
                 new StandardResponse(

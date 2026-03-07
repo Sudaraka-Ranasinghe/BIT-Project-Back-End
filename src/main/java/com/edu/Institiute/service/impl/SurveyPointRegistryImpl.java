@@ -56,7 +56,7 @@ public class SurveyPointRegistryImpl implements SurveyPointService {
                         dto.getPointCreatedDate(),
                         dto.getPointModifiedBy(),
                         dto.getPointModifiedDate(),
-                        surveyProjectMapper.toSurveyProjectrDto(exxProject.get())
+                        surveyProjectMapper.toSurveyProjectDto(exxProject.get())
                 );
                 surveyPointRepo.save(surveyPointMapper.dtoToSurveyPointEntity(surveyPointDto));
                 return new CommonResponseDto(201, "Survey point  saved!", surveyPointDto.getSurveyPointId(), new ArrayList<>());

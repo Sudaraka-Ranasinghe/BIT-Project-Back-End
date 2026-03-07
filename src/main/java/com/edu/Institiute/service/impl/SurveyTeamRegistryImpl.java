@@ -71,7 +71,7 @@ public class SurveyTeamRegistryImpl implements SurveyTeamService {
                         dto.getTeamModifiedBy(),
                         dto.getTeamModifiedDate(),
                         statusMapper.toStatusDto(status.get()),
-                        surveyProjectMapper.toSurveyProjectrDto(exxSurveyProject.get()),
+                        surveyProjectMapper.toSurveyProjectDto(exxSurveyProject.get()),
                         surveyorMapper.toSurveyorDto(exxSurveyor.get())
                 );
                 surveyTeamRepo.save(surveyTeamMapper.dtoToSurveyTeamEntity(surveyTeamDto));
