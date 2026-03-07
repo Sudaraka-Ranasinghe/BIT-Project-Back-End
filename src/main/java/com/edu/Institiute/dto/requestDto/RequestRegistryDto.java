@@ -141,4 +141,28 @@ public class RequestRegistryDto {
     private Date pointModifiedDate;
     private String ProjectId;
 
+    // Survey Report
+
+    private String reportTitle;
+    private String reportData;
+    private String summary;
+    private Date generatedDate;
+    private Date approvalDate;
+    private String reportCreatedBy;
+    private Date reportCreatedDate;
+    private String reportModifiedBy;
+    private Date reportModifiedDate;
+    private String projectId;
+    private String surveyorId;
+
+    // Land Parcel
+    private String titleDeedNumber;
+    private String area;
+    private String address;
+    private String createdBy;
+    private Date createdDate;
+    private String modifiedBy;
+    private Date modifiedDate;
+
+
 }

@@ -20,7 +20,7 @@ public class SurveyorController {
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @PostMapping
-    public ResponseEntity<StandardResponse> savedSurveyor(@RequestBody RequestRegistryDto data){
+    public ResponseEntity<StandardResponse> saveSurveyor(@RequestBody RequestRegistryDto data){
         CommonResponseDto commonResponseDto = surveyorService.saveSurveyor(data);
         return new ResponseEntity<>(
                 new StandardResponse(
