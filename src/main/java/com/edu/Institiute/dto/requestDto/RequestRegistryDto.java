@@ -1,9 +1,6 @@
 package com.edu.Institiute.dto.requestDto;
 
-import com.edu.Institiute.dto.StatusDto;
-import com.edu.Institiute.dto.SurveyProjectDto;
-import com.edu.Institiute.dto.SurveyRequestDto;
-import com.edu.Institiute.dto.SurveyorDto;
+import com.edu.Institiute.dto.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -163,6 +160,19 @@ public class RequestRegistryDto {
     private Date createdDate;
     private String modifiedBy;
     private Date modifiedDate;
+
+    // Invoice
+    private Date issueDate;
+    private Date dueDate;
+    private Float amount;
+    private Float taxAmount;
+    private Float totalAmount;
+    private String invoiceCreatedBy;
+    private Date invoiceCreatedDate;
+    private String invoiceModifiedBy;
+    private Date invoiceModifiedDate;
+
+
 
 
 }
