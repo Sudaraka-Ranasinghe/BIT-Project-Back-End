@@ -43,14 +43,14 @@ public class SurveyTeam {
 
     @ManyToOne
     @JoinColumn(name ="statusId",referencedColumnName = "id")
-    private Status Status;
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name ="projectId",referencedColumnName = "projectId")
-    private SurveyProject SurveyProject;
+    private SurveyProject surveyProject;
 
     @ManyToOne
     @JoinColumn(name ="surveyorId",referencedColumnName = "surveyorId")
-    private Surveyor Surveyor;
+    private Surveyor surveyor;
 
 }

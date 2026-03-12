@@ -1,8 +1,5 @@
 package com.edu.Institiute.dto;
 
-import com.edu.Institiute.entity.Status;
-import com.edu.Institiute.entity.SurveyProject;
-import com.edu.Institiute.entity.Surveyor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
