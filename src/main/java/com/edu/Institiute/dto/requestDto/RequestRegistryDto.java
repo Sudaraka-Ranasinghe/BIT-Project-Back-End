@@ -1,6 +1,5 @@
 package com.edu.Institiute.dto.requestDto;
 
-import com.edu.Institiute.dto.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -112,7 +111,7 @@ public class RequestRegistryDto {
     private Date teamCreatedDate;
     private String teamModifiedBy;
     private Date teamModifiedDate;
-    private String SurveyProjectId;
+    private String projectId;
     private String SurveyorId;
 
     // Survey Instrument
@@ -136,10 +135,9 @@ public class RequestRegistryDto {
     private Date pointCreatedDate;
     private String pointModifiedBy;
     private Date pointModifiedDate;
-    private String ProjectId;
+   // private String ProjectId;
 
     // Survey Report
-
     private String reportTitle;
     private String reportData;
     private String summary;
@@ -149,7 +147,6 @@ public class RequestRegistryDto {
     private Date reportCreatedDate;
     private String reportModifiedBy;
     private Date reportModifiedDate;
-    private String projectId;
     private String surveyorId;
 
     // Land Parcel
@@ -172,7 +169,21 @@ public class RequestRegistryDto {
     private String invoiceModifiedBy;
     private Date invoiceModifiedDate;
 
+    // Admin Staff
+    private String role;
+    private String EmployeeId;
 
-
+    // Payment
+    private Date paymentDate;
+    private Float amountPaid;
+    private String paymentMethod;
+    private String transactionReference;
+    private String receivedBy;
+    private String paymentCreatedBy;
+    private Date paymentCreatedDate;
+    private String paymentModifiedBy;
+    private Date paymentModifiedDate;
+    private String InvoiceId;
+    private String AdminStaffId;
 
 }

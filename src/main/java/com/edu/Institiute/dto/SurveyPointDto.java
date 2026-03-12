@@ -21,5 +21,5 @@ public class SurveyPointDto {
     private Date pointCreatedDate;
     private String pointModifiedBy;
     private Date pointModifiedDate;
-    private SurveyProjectDto SurveyProject;
+    private SurveyProjectDto surveyProject;
 }

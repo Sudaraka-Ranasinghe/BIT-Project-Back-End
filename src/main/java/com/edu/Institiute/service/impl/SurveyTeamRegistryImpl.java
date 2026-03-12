@@ -56,7 +56,7 @@ public class SurveyTeamRegistryImpl implements SurveyTeamService {
         // To Check if surveyorId already exists
         Optional<Surveyor> exxSurveyor = surveyorRepo.findByExxSurveyorId((dto.getSurveyorId()));
         // To check if surveyProjectId already exists
-        Optional<SurveyProject> exxSurveyProject = surveyProjectRepo.findByExxSurveyProjectId((dto.getSurveyProjectId()));
+        Optional<SurveyProject> exxSurveyProject = surveyProjectRepo.findByExxSurveyProjectId((dto.getProjectId()));
 
         if (!exxSurveyProject.isEmpty() && !exxSurveyor.isEmpty()) {
             try {

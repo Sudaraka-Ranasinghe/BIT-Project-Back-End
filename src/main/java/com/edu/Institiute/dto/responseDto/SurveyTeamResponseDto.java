@@ -21,6 +21,6 @@ public class SurveyTeamResponseDto {
     private String teamModifiedBy;
     private Date teamModifiedDate;
     private StatusDto Status;
-    private SurveyProjectDto SurveyProjectId;
+    private SurveyProjectDto projectId;
     private SurveyorDto SurveyorId;
 }

@@ -49,9 +49,9 @@ public class SurveyProjectRegistryImpl implements SurveyProjectService {
         if (!ExxSurveyRequest.isEmpty()) {
             try {
 
-                String surveyProjectId = generator.generateFourNumbers();
+                String projectId = generator.generateFourNumbers();
                 SurveyProjectDto surveyProjectDto = new SurveyProjectDto(
-                        surveyProjectId,
+                        projectId,
                         dto.getProjectTitle(),
                         dto.getProjectDescription(),
                         dto.getOfficialStartDate(),
@@ -68,7 +68,7 @@ public class SurveyProjectRegistryImpl implements SurveyProjectService {
                 );
                 surveyProjectRepo.save(surveyProjectMapper.dtoToSurveyProjectEntity(surveyProjectDto));
 
-                return new CommonResponseDto(201, "Survey Project  saved!", surveyProjectDto.getProjectTitle(), new ArrayList<>());
+                return new CommonResponseDto(201, "Survey Project  saved!", surveyProjectDto.getProjectId(), new ArrayList<>());
             } catch (Exception e) {
                 throw new EntryNotFoundException("Can't Save because of this Error -->  " + e);
             }
