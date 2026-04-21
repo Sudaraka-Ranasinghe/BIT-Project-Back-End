@@ -86,7 +86,9 @@ public class RequestRegistryDto {
     private Date requestCreatedDate;
     private String requestModifiedBy;
     private Date requestModifiedDate;
-    private String ClientId;
+    private Integer statusId;
+    private String clientId;
+
 
 
     // Survey Project
@@ -101,7 +103,7 @@ public class RequestRegistryDto {
     private Date projectCreatedDate;
     private String projectModifiedBy;
     private Date projectModifiedDate;
-    private String SurveyRequestId;
+    private String surveyRequestId;
 
     // Survey Team
     private String teamRole;
@@ -112,7 +114,7 @@ public class RequestRegistryDto {
     private String teamModifiedBy;
     private Date teamModifiedDate;
     private String projectId;
-    private String SurveyorId;
+    private String surveyorId;
 
     // Survey Instrument
     private String instrumentName;
@@ -147,7 +149,6 @@ public class RequestRegistryDto {
     private Date reportCreatedDate;
     private String reportModifiedBy;
     private Date reportModifiedDate;
-    private String surveyorId;
 
     // Land Parcel
     private String titleDeedNumber;

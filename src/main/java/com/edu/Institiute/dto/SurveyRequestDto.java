@@ -22,6 +22,6 @@ public class SurveyRequestDto {
     private Date requestCreatedDate;
     private String requestModifiedBy;
     private Date requestModifiedDate;
-    private StatusDto Status;
+    private StatusDto status;
     private ClientDto client;
 }

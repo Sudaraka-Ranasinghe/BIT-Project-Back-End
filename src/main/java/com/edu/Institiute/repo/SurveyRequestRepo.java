@@ -11,15 +11,15 @@ import java.util.Optional;
 
 @Repository
 public interface SurveyRequestRepo extends JpaRepository<SurveyRequest,String> {
-    @Query(value = "SELECT * FROM surveyRequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyrequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
     SurveyRequest findBySurveyRequestId(@Param("surveyRequestId") String surveyRequestId);
 
-    @Query(value = "SELECT * FROM surveyRequest WHERE survey_request_id=:surveyRequestCode", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyrequest WHERE survey_request_id=:surveyRequestCode", nativeQuery = true)
     List<SurveyRequest> getAllSurveyRequestForProvidedId(@Param("surveyRequestCode") String surveyRequestCode);
 
-    @Query(value = "SELECT * FROM surveyRequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyrequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
     Optional<SurveyRequest> getSurveyRequestsById(@Param("surveyRequestId")String surveyRequestId);
 
-    @Query(value = "SELECT * FROM surveyRequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyrequest WHERE survey_request_id=:surveyRequestId", nativeQuery = true)
     Optional<SurveyRequest> findByExxSurveyRequestId(@Param("surveyRequestId") String surveyRequestId);
 }

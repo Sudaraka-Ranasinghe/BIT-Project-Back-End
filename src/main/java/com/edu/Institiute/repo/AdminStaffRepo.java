@@ -12,15 +12,15 @@ import java.util.Optional;
 @Repository
 public interface AdminStaffRepo extends JpaRepository<AdminStaff,String> {
 
-    @Query(value = "SELECT * FROM adminStaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
+    @Query(value = "SELECT * FROM adminstaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
     AdminStaff findByAdminStaffId(@Param("adminStaffId") String adminStaffId);
 
-    @Query(value = "SELECT * FROM adminStaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
+    @Query(value = "SELECT * FROM adminstaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
     List<AdminStaff> getAllAdminStaffForProvidedId(@Param("adminStaffId") String adminStaffId);
 
-    @Query(value = "SELECT * FROM adminStaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
+    @Query(value = "SELECT * FROM adminstaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
     Optional<AdminStaff> getAdminStaffById(@Param("adminStaffId")String adminStaffId);
 
-    @Query(value = "SELECT * FROM adminStaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
+    @Query(value = "SELECT * FROM adminstaff WHERE admin_staff_id=:adminStaffId", nativeQuery = true)
     Optional<AdminStaff> findByExxAdminStaffId(@Param("adminStaffId") String adminStaffId);
 }

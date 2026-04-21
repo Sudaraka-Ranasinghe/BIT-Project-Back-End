@@ -18,7 +18,7 @@ public class SurveyTeamDto {
     private Date teamCreatedDate;
     private String teamModifiedBy;
     private Date teamModifiedDate;
-    private StatusDto Status;
-    private SurveyProjectDto SurveyProject;
-    private SurveyorDto Surveyor;
+    private StatusDto status;
+    private SurveyProjectDto surveyproject;
+    private SurveyorDto surveyor;
 }

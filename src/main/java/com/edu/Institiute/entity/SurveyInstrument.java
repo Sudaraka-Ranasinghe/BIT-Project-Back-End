@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Table(name="surveyInstrument")
+@Table(name="surveyinstrument")
 public class SurveyInstrument {
 
     @Id
@@ -46,5 +46,5 @@ public class SurveyInstrument {
 
     @ManyToOne
     @JoinColumn(name ="statusId",referencedColumnName = "id")
-    private Status Status;
+    private Status status;
 }

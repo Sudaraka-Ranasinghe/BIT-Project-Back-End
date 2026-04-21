@@ -20,7 +20,7 @@ public class SurveyTeamResponseDto {
     private Date teamCreatedDate;
     private String teamModifiedBy;
     private Date teamModifiedDate;
-    private StatusDto Status;
+    private StatusDto status;
     private SurveyProjectDto projectId;
-    private SurveyorDto SurveyorId;
+    private SurveyorDto surveyorId;
 }

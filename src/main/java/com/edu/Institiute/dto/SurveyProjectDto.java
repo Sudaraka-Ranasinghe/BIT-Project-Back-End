@@ -22,6 +22,6 @@ public class SurveyProjectDto {
     private Date projectCreatedDate;
     private String projectModifiedBy;
     private Date projectModifiedDate;
-    private StatusDto Status;
-    private SurveyRequestDto SurveyRequest;
+    private StatusDto status;
+    private SurveyRequestDto surveyrequest;
 }

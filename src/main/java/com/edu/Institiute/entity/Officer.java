@@ -1,14 +1,14 @@
-//package com.edu.Institiute.entity;
-//
+package com.edu.Institiute.entity;
+
 //import com.edu.Institiute.api.DepartmentController;
-//import lombok.AllArgsConstructor;
-//import lombok.Getter;
-//import lombok.RequiredArgsConstructor;
-//import lombok.Setter;
-//
-//import javax.persistence.*;
-//import java.util.Date;
-//import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 //
 //@Entity
 //@Getter
