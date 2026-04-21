@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200/")
 @RestController
-@RequestMapping("/api/v1/surveyProject")
+@RequestMapping("/api/v1/surveyproject")
 public class SurveyProjectController {
     @Autowired
     private SurveyProjectService surveyProjectService;

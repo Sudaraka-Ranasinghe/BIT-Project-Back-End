@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 @CrossOrigin(origins = "http://localhost:4200/")
 @RestController
-@RequestMapping("/api/v1/surveyRequest")
+@RequestMapping("/api/v1/surveyrequest")
 public class SurveyRequestController {
 
     @Autowired

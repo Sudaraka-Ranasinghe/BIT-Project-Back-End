@@ -12,5 +12,5 @@ public class AdminStaffResponseDto {
 
     private String adminStaffId;
     private String role;
-    private EmployeeDto EmployeeId;
+    private EmployeeDto employeeId;
 }

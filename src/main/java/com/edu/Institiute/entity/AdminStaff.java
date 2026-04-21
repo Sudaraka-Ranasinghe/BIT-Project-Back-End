@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Table(name = "adminstaff")
 public class AdminStaff {
 
     @Id
@@ -23,5 +24,5 @@ public class AdminStaff {
 
     @ManyToOne
     @JoinColumn(name ="employeeId",referencedColumnName = "employeeId")
-    private Employee Employee;
+    private Employee employee;
 }

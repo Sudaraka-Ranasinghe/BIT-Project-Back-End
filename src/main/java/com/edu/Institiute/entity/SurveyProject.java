@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Table(name = "surveyProject")
+@Table(name = "surveyproject")
 public class SurveyProject {
 
     @Id
@@ -55,9 +55,9 @@ public class SurveyProject {
 
     @ManyToOne
     @JoinColumn(name ="statusId",referencedColumnName = "id")
-    private Status Status;
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name ="surveyRequestId",referencedColumnName = "surveyRequestId")
-    private SurveyRequest SurveyRequest;
+    private SurveyRequest surveyrequest;
 }

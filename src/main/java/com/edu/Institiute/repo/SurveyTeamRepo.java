@@ -12,12 +12,12 @@ import java.util.Optional;
 @Repository
 public interface SurveyTeamRepo extends JpaRepository<SurveyTeam,String> {
 
-    @Query(value = "SELECT * FROM surveyTeam WHERE survey_team_id=:surveyTeamId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyteam WHERE survey_team_id=:surveyTeamId", nativeQuery = true)
     SurveyTeam findBySurveyTeamId(@Param("surveyTeamId") String surveyTeamId);
 
-    @Query(value = "SELECT * FROM surveyTeam WHERE survey_team_id=:surveyTeamCode", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyteam WHERE survey_team_id=:surveyTeamCode", nativeQuery = true)
     List<SurveyTeam> getAllSurveyTeamForProvidedId(@Param("surveyTeamCode") String surveyTeamCode);
 
-    @Query(value = "SELECT * FROM surveyTeam WHERE survey_team_id=:surveyTeamId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyteam WHERE survey_team_id=:surveyTeamId", nativeQuery = true)
     Optional<SurveyTeam> getSurveyTeamById(@Param("surveyTeamId")String surveyTeamId);
 }

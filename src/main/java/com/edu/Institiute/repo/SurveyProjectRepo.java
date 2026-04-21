@@ -11,15 +11,15 @@ import java.util.Optional;
 
 @Repository
 public interface SurveyProjectRepo extends JpaRepository<SurveyProject,String> {
-    @Query(value = "SELECT * FROM surveyProject WHERE project_id=:projectId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyproject WHERE project_id=:projectId", nativeQuery = true)
     SurveyProject findByProjectId(@Param("projectId") String projectId);
 
-    @Query(value = "SELECT * FROM surveyProject WHERE project_id=:projectCode", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyproject WHERE project_id=:projectCode", nativeQuery = true)
     List<SurveyProject> getAllProjectForProvidedId(@Param("projectCode") String projectCode);
 
-    @Query(value = "SELECT * FROM surveyProject WHERE project_id=:projectId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyproject WHERE project_id=:projectId", nativeQuery = true)
     Optional<SurveyProject> getProjectById(@Param("projectId")String projectId);
 
-    @Query(value = "SELECT * FROM surveyProject WHERE project_id=:ProjectId", nativeQuery = true)
+    @Query(value = "SELECT * FROM surveyproject WHERE project_id=:ProjectId", nativeQuery = true)
     Optional<SurveyProject> findByExxSurveyProjectId(@Param("ProjectId") String ProjectId);
 }

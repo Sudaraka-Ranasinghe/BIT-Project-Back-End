@@ -21,5 +21,5 @@ public class SurveyInstrumentDto {
     private Date instrumentCreatedDate;
     private String instrumentModifiedBy;
     private Date instrumentModifiedDate;
-    private StatusDto Status;
+    private StatusDto status;
 }
